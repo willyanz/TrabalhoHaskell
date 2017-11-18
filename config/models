@@ -1,17 +1,13 @@
-Produto json
-    nome    Text
-    preco   Double
-    estoque Int
-    deriving Show
-
-Compra json
-    cliid       ClienteId
-    proid       ProdutoId
-    comprado    Int
+Marinheiro json
+    nm_marinheiro   Text
     
-Cliente json
-    nome    Text
-    cpf     Text
-    email   Text
-    UniqueEmail email 
-
+Responsavel json
+    nm_responsavel  Text
+    senhaR          Text
+    email           Text
+    UniqueEmail     email
+    
+Embarcacao json
+    inscricao       Int
+    nm_embarcacao   Text
+    resid           ResponsavelId

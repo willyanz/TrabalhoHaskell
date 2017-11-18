@@ -1,27 +1,23 @@
 /static StaticR Static appStatic
 
-/favicon.ico FaviconR GET
-/robots.txt RobotsR GET
 
-/produto/inserir                     ProdutoR       POST
-/produto/apagar/#ProdutoId           ProdutoDelR    DELETE
-/produto/buscar/#ProdutoId           BuscaProdR     GET
-/produto/alterar/#ProdutoId          AlteraProdR    PUT
-/produto/alterar/nome/#ProdutoId     AlteraNomeR    PATCH
-/produto/listar/#Int/menorestoque    MenorEstoqueR  GET
+/responsavel/criar						CriarResponsavelR		GET	POST
+/responsavel/deletar/#ResponsavelId		DeletarResponsavelR 	POST
+/responsavel/listar						ListarResponsavelR		GET
+/responsavel/editar/#ResponsavelId		EditarResponsavelR      PUT
+/responsavel/buscar/#ResponsavelId	    BuscarResponsavelR		GET
 
-/cliente/inserir                     ClienteR       POST
-/cliente/buscar/#ClienteId           BuscaCliR      GET
-/cliente/buscar/#Text/email          EmailCliR      GET
+/marinheiro/listar					    ListarMarinheiroR       GET
+/marinheiro/criar					    CriarMarinheiroR	    GET
+/marinheiro/deletar/#MarinheiroId       DeletarMarinheiroR      POST
+/marinheiro/editar/#MarinheiroId        EditarMarinheiroR       PUT
+/marinheiro/buscar/#MarinheiroId        BuscarMarinheiroR       GET
 
-/compra/inserir                      CompraR        POST
-/compra/#ClienteId/listar            ListaProdR     GET
-/compra/#ClienteId/listarf           ListaProdFR    GET
+/embarcacao/criar					    CriarEmbarcacaoR	    GET
+/embarcacao/listar					    ListarEmbarcacaoR	    GET
+/embarcacao/buscar/#EmbarcacaoId		BuscarEmbarcacaoR	    GET
+/embarcacao/editar/#EmbarcacaoId		EditarEmbarcacaoR	    PUT
+/embarcacao/excluir/#EmbarcacaoId		ExcluirEmbarcacaoR	    POST
 
-/                                    HomeR          GET
-/pag1                                Pag1R          GET
-/pag2                                Pag2R          GET
-/pag3                                Pag3R          GET
-/add/#Int/#Int                       AddR           GET
-/tail/#Text                          TailR          GET
-/exemplo                             ExemploR       GET
+
+
