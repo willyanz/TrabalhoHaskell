@@ -23,4 +23,8 @@ Travessia json
     data_travessia          Day
     embarcacao_marinheiro   Embarcacao_MarinheiroId
     
+Travessia_teste json
+    data_travessia          Day
+    embarcacao_marinheiro   Embarcacao_MarinheiroId
+    
     

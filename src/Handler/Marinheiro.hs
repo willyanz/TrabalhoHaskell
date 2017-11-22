@@ -10,6 +10,13 @@ import Import
 import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
+getMarinheiroR :: Handler Html
+getMarinheiroR = do
+    defaultLayout $ do 
+    addStylesheet $ (StaticR css_bootstrap_min_css)
+    addScript (StaticR js_bootstrap_min_js)
+
+
 getListarMarinheiroR :: Handler Html
 getListarMarinheiroR = undefined
 
