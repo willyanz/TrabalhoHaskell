@@ -1,18 +1,26 @@
 /static StaticR Static appStatic
 
 
+/                                       HomeR                   GET
+
+/login                                  LoginR                  GET  POST
+/logout                                 LogoutR                 POST
+
+/responsavel                            ResponsavelR            GET POST
 /responsavel/criar						CriarResponsavelR		GET	POST
 /responsavel/deletar/#ResponsavelId		DeletarResponsavelR 	POST
 /responsavel/listar						ListarResponsavelR		GET
 /responsavel/editar/#ResponsavelId		EditarResponsavelR      PUT
 /responsavel/buscar/#ResponsavelId	    BuscarResponsavelR		GET
 
+/marinheiro                             MarinheiroR             GET POST
 /marinheiro/listar					    ListarMarinheiroR       GET
 /marinheiro/criar					    CriarMarinheiroR	    GET
 /marinheiro/deletar/#MarinheiroId       DeletarMarinheiroR      POST
 /marinheiro/editar/#MarinheiroId        EditarMarinheiroR       PUT
 /marinheiro/buscar/#MarinheiroId        BuscarMarinheiroR       GET
 
+/embarcacao                             EmbarcacaoR             GET POST
 /embarcacao/criar					    CriarEmbarcacaoR	    GET
 /embarcacao/listar					    ListarEmbarcacaoR	    GET
 /embarcacao/buscar/#EmbarcacaoId		BuscarEmbarcacaoR	    GET

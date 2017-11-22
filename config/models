@@ -1,5 +1,8 @@
 Marinheiro json
     nm_marinheiro   Text
+    email           Text
+    senhaR          Text
+    UniqueEmail     email
     
 Responsavel json
     nm_responsavel  Text
@@ -9,5 +12,15 @@ Responsavel json
     
 Embarcacao json
     inscricao       Int
-    nm_embarcacao   Text
     resid           ResponsavelId
+    nm_embarcacao   Text
+    
+Embarcacao_Marinheiro json
+    marinheiro      MarinheiroId
+    embarcacao      EmbarcacaoId
+    
+Travessia json
+    data_travessia          Day
+    embarcacao_marinheiro   Embarcacao_MarinheiroId
+    
+    

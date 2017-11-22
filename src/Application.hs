@@ -39,6 +39,7 @@ import System.Log.FastLogger                (defaultBufSize, newStdoutLoggerSet,
 import Handler.Embarcacao
 import Handler.Marinheiro
 import Handler.Responsavel
+import Handler.Login 
 
 
 -- This line actually creates our YesodDispatch instance. It is the second half
