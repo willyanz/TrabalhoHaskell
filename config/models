@@ -1,14 +1,14 @@
 Marinheiro json
     nm_marinheiro   Text
-    email           Text
-    senhaR          Text
-    UniqueEmail     email
+    emailm          Text
+    senham          Text
+    UniqueMarinheiroEmail     emailm
     
 Responsavel json
     nm_responsavel  Text
-    senhaR          Text
-    email           Text
-    UniqueEmail     email
+    senhar          Text
+    emailr          Text
+    UniqueResponsavelEmail     emailr
     
 Embarcacao json
     inscricao       Int
@@ -27,4 +27,8 @@ Travessia_teste json
     data_travessia          Day
     embarcacao_marinheiro   Embarcacao_MarinheiroId
     
-    
+Funcionario json
+    nm_funcionario  Text
+    emailf          Text
+    senhaf          Text
+    UniqueFuncionarioEmail emailf

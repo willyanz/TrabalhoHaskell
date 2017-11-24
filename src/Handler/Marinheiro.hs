@@ -11,23 +11,22 @@ import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
 getMarinheiroR :: Handler Html
-getMarinheiroR = do
-    defaultLayout $ do 
-    addStylesheet $ (StaticR css_bootstrap_min_css)
-    addScript (StaticR js_bootstrap_min_js)
+getMarinheiroR = undefined
 
+getCadastrarMarinheiroR :: Handler Html
+getCadastrarMarinheiroR = undefined
+
+postCadastrarMarinheiroR :: Handler Html
+postCadastrarMarinheiroR = undefined
 
 getListarMarinheiroR :: Handler Html
 getListarMarinheiroR = undefined
-
-getCriarMarinheiroR :: Handler Html
-getCriarMarinheiroR = undefined
-
-postDeletarMarinheiroR :: MarinheiroId -> Handler Html
-postDeletarMarinheiroR = undefined
 
 putEditarMarinheiroR :: MarinheiroId -> Handler Html
 putEditarMarinheiroR = undefined
 
 getBuscarMarinheiroR :: MarinheiroId -> Handler Html
 getBuscarMarinheiroR = undefined
+
+postExcluirMarinheiroR :: MarinheiroId -> Handler Html
+postExcluirMarinheiroR = undefined

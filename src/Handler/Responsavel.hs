@@ -11,20 +11,14 @@ import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
 getResponsavelR :: Handler Html
-getResponsavelR = do
-    defaultLayout $ do 
-    addStylesheet $ (StaticR css_bootstrap_min_css)
-    addScript (StaticR js_bootstrap_min_js)
+getResponsavelR = undefined
 
 
-getCriarResponsavelR :: Handler Html
-getCriarResponsavelR = undefined
+getCadastrarResponsavelR :: Handler Html
+getCadastrarResponsavelR = undefined
 
-postCriarResponsavelR :: Handler Html
-postCriarResponsavelR = undefined
-
-postDeletarResponsavelR :: ResponsavelId -> Handler Html
-postDeletarResponsavelR = undefined
+postCadastrarResponsavelR :: Handler Html
+postCadastrarResponsavelR = undefined
 
 getListarResponsavelR :: Handler Html
 getListarResponsavelR = undefined
@@ -34,3 +28,6 @@ putEditarResponsavelR = undefined
 
 getBuscarResponsavelR :: ResponsavelId -> Handler Html
 getBuscarResponsavelR = undefined
+
+postExcluirResponsavelR :: ResponsavelId -> Handler Html
+postExcluirResponsavelR = undefined

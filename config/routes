@@ -1,31 +1,39 @@
 /static StaticR Static appStatic
 
+/favicon.ico FaviconR GET
+/robots.txt RobotsR GET
 
 /                                       HomeR                   GET
 
 /login                                  LoginR                  GET  POST
 /logout                                 LogoutR                 POST
 
-/responsavel                            ResponsavelR            GET POST
-/responsavel/criar						CriarResponsavelR		GET	POST
-/responsavel/deletar/#ResponsavelId		DeletarResponsavelR 	POST
+/responsavel                            ResponsavelR            GET 
+/responsavel/cadastrar					CadastrarResponsavelR	GET	POST
 /responsavel/listar						ListarResponsavelR		GET
 /responsavel/editar/#ResponsavelId		EditarResponsavelR      PUT
 /responsavel/buscar/#ResponsavelId	    BuscarResponsavelR		GET
+/responsavel/excluir/#ResponsavelId		ExcluirResponsavelR 	POST
 
-/marinheiro                             MarinheiroR             GET POST
+/marinheiro                             MarinheiroR             GET 
+/marinheiro/cadastrar				    CadastrarMarinheiroR    GET POST
 /marinheiro/listar					    ListarMarinheiroR       GET
-/marinheiro/criar					    CriarMarinheiroR	    GET
-/marinheiro/deletar/#MarinheiroId       DeletarMarinheiroR      POST
 /marinheiro/editar/#MarinheiroId        EditarMarinheiroR       PUT
 /marinheiro/buscar/#MarinheiroId        BuscarMarinheiroR       GET
+/marinheiro/excluir/#MarinheiroId       ExcluirMarinheiroR      POST
 
-/embarcacao                             EmbarcacaoR             GET POST
-/embarcacao/criar					    CriarEmbarcacaoR	    GET
+/embarcacao                             EmbarcacaoR             GET 
+/embarcacao/cadastrar				    CadastrarEmbarcacaoR    GET POST
 /embarcacao/listar					    ListarEmbarcacaoR	    GET
 /embarcacao/buscar/#EmbarcacaoId		BuscarEmbarcacaoR	    GET
 /embarcacao/editar/#EmbarcacaoId		EditarEmbarcacaoR	    PUT
 /embarcacao/excluir/#EmbarcacaoId		ExcluirEmbarcacaoR	    POST
 
+/funcionario                            FuncionarioR            GET 
+/funcionario/cadastrar				    CadastrarFuncionarioR   GET POST
+/funcionario/listar					    ListarFuncionarioR	    GET
+/funcionario/buscar/#FuncionarioId		BuscarFuncionarioR	    GET
+/funcionario/editar/#FuncionarioId		EditarFuncionarioR	    PUT
+/funcionario/excluir/#FuncionarioId		ExcluirFuncionarioR	    POST
 
 

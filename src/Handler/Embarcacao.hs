@@ -10,15 +10,19 @@ import Import
 import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
+
 getEmbarcacaoR :: Handler Html
-getEmbarcacaoR = do
-    defaultLayout $ do 
+getEmbarcacaoR = undefined
+{-    defaultLayout $ do 
     addStylesheet $ (StaticR css_bootstrap_min_css)
     addScript (StaticR js_bootstrap_min_js)
+-}
 
+getCadastrarEmbarcacaoR :: Handler Html
+getCadastrarEmbarcacaoR = undefined
 
-getCriarEmbarcacaoR :: Handler Html
-getCriarEmbarcacaoR = undefined
+postCadastrarEmbarcacaoR :: Handler Html
+postCadastrarEmbarcacaoR = undefined
 
 getListarEmbarcacaoR :: Handler Html
 getListarEmbarcacaoR = undefined

@@ -40,6 +40,9 @@ import Handler.Embarcacao
 import Handler.Marinheiro
 import Handler.Responsavel
 import Handler.Login 
+import Handler.Home 
+import Handler.Funcionario 
+import Handler.Common
 
 
 -- This line actually creates our YesodDispatch instance. It is the second half

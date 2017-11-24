@@ -9,15 +9,18 @@ module Handler.Login where
 import Import
 import Database.Persist.Postgresql
 
+-- formulario de login
 formLogin :: Form (Text, Text)
 formLogin = renderDivs $ (,)
     <$> areq emailField "Email: " Nothing
     <*> areq passwordField "Senha: " Nothing
 
-autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Aluno))
-autenticar email senha = runDB $ selectFirst [AlunoEmail ==. email
-                                             ,AlunoSenha ==. senha] []
-    
+-- funcao de autentificaçao
+autenticar :: Text -> Text -> HandlerT App IO (Maybe (Entity Funcionario))
+autenticar email senha = runDB $ selectFirst [FuncionarioEmailf ==. email
+                                             ,FuncionarioSenhaf ==. senha] []
+
+-- executa o formulario recebendo os dados de login
 getLoginR :: Handler Html
 getLoginR = do 
     (widget,enctype) <- generateFormPost formLogin
@@ -31,25 +34,23 @@ getLoginR = do
                 <input type="submit" value="Login">  
         |]
 
+-- autentifica os dados recebidos pelo form 
 postLoginR :: Handler Html
 postLoginR = do
     ((res,_),_) <- runFormPost formLogin
     case res of 
-        FormSuccess ("root@root.com","root") -> do 
-            setSession "_ID" "admin"
-            redirect AdminR
         FormSuccess (email,senha) -> do 
-            aluno <- autenticar email senha 
-            case aluno of 
+            func <- autenticar email senha 
+            case func of 
                 Nothing -> do 
                     setMessage $ [shamlet| Usuario ou senha invalido |]
                     redirect LoginR 
-                Just (Entity aluid aluno) -> do 
-                    setSession "_ID" (alunoNome aluno)
+                Just (Entity funcid func) -> do 
+                    setSession "_ID" (funcionarioNm_funcionario func)
                     redirect HomeR
         _ -> redirect HomeR
                 
-
+-- desloga da sessao devolvendo pra home
 postLogoutR :: Handler Html
 postLogoutR = do 
     deleteSession "_ID"
