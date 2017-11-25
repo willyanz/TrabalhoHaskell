@@ -37,21 +37,21 @@ getLoginR = do
 -- autentifica os dados recebidos pelo form 
 postLoginR :: Handler Html
 postLoginR = do
-    ((res,_),_) <- runFormPost formLogin
+    ((res,_),_) <- runFormPost formLogin -- recebe a resposta do form
     case res of 
         FormSuccess (email,senha) -> do 
-            func <- autenticar email senha 
+            func <- autenticar email senha -- pega a resposta do form, executa o autenticar
             case func of 
-                Nothing -> do 
+                Nothing -> do -- se a autentificaçao falhar
                     setMessage $ [shamlet| Usuario ou senha invalido |]
                     redirect LoginR 
-                Just (Entity funcid func) -> do 
-                    setSession "_ID" (funcionarioNm_funcionario func)
+                Just (Entity funcid func) -> do -- se a autentificaçao for sucesso
+                    setSession "_Funcionario" (funcionarioNm_funcionario func)
                     redirect HomeR
         _ -> redirect HomeR
                 
 -- desloga da sessao devolvendo pra home
 postLogoutR :: Handler Html
 postLogoutR = do 
-    deleteSession "_ID"
+    deleteSession "_Funcionario"
     redirect HomeR

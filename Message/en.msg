@@ -1,2 +1,2 @@
-Welcome: Welcome
+Bemvindo: Welcome
 Visita: Guest
