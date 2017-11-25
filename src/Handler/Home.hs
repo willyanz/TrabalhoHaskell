@@ -12,7 +12,8 @@ import Database.Persist.Postgresql
 
 getHomeR :: Handler Html
 getHomeR = do
-    logado <- lookupLogin >>= lookupSession
+    logado <- lookupLogin
+    logado' <- lookupSession logado
     defaultLayout $ do
         toWidget [lucius|
             li {
@@ -22,31 +23,41 @@ getHomeR = do
             
         |]
         [whamlet|
-            $maybe logadof <- logado
-                <h1> _{MsgBemvindo} - #{logadof}
-                    <br>
-                    <li> <a href=@{FuncionarioR}>  Funcionarios
-                    <li> <a href=@{ResponsavelR}> Responsáveis
-                    <li> <a href=@{EmbarcacaoR}> Embarcações
-            $nothing
-                <h1> _{MsgBemvindo} - _{MsgVisita}
+                ^{home logado} 
             <ul>
                 
-                $maybe func <- logado
+                $maybe logar <- logado'
                     <li> 
                         <form action=@{LogoutR} method=post>
                             <input type="submit" value="Logout">
                 $nothing
                     <li> <a href=@{LoginR}> Login
         |]
-        
-lookupLogin :: Handler Text
-lookupLogin = do
-    logf <- lookupSession "_Funcionario"
-    case logf of
-        (Just _) -> return "_Funcionario"
-        Nothing -> do 
-           logr <- lookupSession "_Responsavel"
-           case logr of
-                (Just _) -> return "_Responsavel"
-                Nothing -> return "_Visitante"
+
+-- home de acordo com o tipo de usuario
+home :: Text -> Widget
+home "_Adm" = 
+    [whamlet|
+        <h1> Coisas de ADM
+        <h1> _{MsgBemvindo} - Adm 
+            <br>
+            <li> <a href=@{FuncionarioR}> Funcionarios
+    |]
+home "_Funcionario" =
+    [whamlet|
+        <h1> Coisas de funcionario
+        <h1> _{MsgBemvindo} - 
+                    <br>
+                    
+                    <li> <a href=@{ResponsavelR}> Responsáveis
+                    <li> <a href=@{EmbarcacaoR}> Embarcações
+                    <li> <a href=@{MarinheiroR}> Marinheiro
+    |]
+home "_Responsavel" =
+    [whamlet|
+        <h1> Coisas de responsável
+    |]
+home _ = 
+    [whamlet|
+        <h1> Coisas de visitante
+    |]

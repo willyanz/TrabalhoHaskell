@@ -6,8 +6,8 @@ Marinheiro json
     
 Responsavel json
     nm_responsavel  Text
-    senhar          Text
     emailr          Text
+    senhar          Text
     UniqueResponsavelEmail     emailr
     
 Embarcacao json

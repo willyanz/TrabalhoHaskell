@@ -21,6 +21,8 @@ formFuncionario = renderDivs $ Funcionario
 getFuncionarioR :: Handler Html
 getFuncionarioR = do
     defaultLayout $ do
+        addStylesheet $ (StaticR css_bootstrap_min_css)
+        addScript (StaticR js_bootstrap_min_js)
         toWidget [lucius|
             li {
                 display: inline-block;
@@ -41,7 +43,10 @@ getCadastrarFuncionarioR :: Handler Html
 getCadastrarFuncionarioR = do 
     (widget,enctype) <- generateFormPost formFuncionario
     defaultLayout $ do
+        addStylesheet $ (StaticR css_bootstrap_min_css)
+        addScript (StaticR js_bootstrap_min_js)
         [whamlet|
+            <li> <a href=@{FuncionarioR}>  Voltar
             <form action=@{CadastrarFuncionarioR} method=post>
                 ^{widget}
                 <input type="submit" value="Cadastrar">

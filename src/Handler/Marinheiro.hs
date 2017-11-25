@@ -19,7 +19,24 @@ formMarinheiro = renderBootstrap $ Marinheiro
 
 
 getMarinheiroR :: Handler Html
-getMarinheiroR = undefined
+getMarinheiroR = do
+    defaultLayout $ do
+        addStylesheet $ (StaticR css_bootstrap_min_css)
+        addScript (StaticR js_bootstrap_min_js)
+        toWidget [lucius|
+            li {
+                display: inline-block;
+                list-style:  none;
+            }
+            
+        |]
+        [whamlet|
+            <h1> Funcionarios
+            <ul>
+                <li> <a href=@{CadastrarMarinheiroR}>  Cadastrar Marinheiro
+                <li> <a href=@{ListarMarinheiroR}>  Listar Marinheiro
+                <li> <a href=@{HomeR}>  Home
+        |]
 
 
 getCadastrarMarinheiroR :: Handler Html
@@ -29,6 +46,7 @@ getCadastrarMarinheiroR = do
         addStylesheet $ (StaticR css_bootstrap_min_css)
         addScript (StaticR js_bootstrap_min_js)
         [whamlet|
+            <li> <a href=@{MarinheiroR}>  Voltar
             <form action=@{CadastrarMarinheiroR} method=post>
                 ^{widget}
                 <input type="submit" value="Cadastrar">

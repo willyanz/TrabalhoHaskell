@@ -20,6 +20,8 @@ formResponsavel = renderDivs $ Responsavel
 getResponsavelR :: Handler Html
 getResponsavelR = do
     defaultLayout $ do
+        addStylesheet $ (StaticR css_bootstrap_min_css)
+        addScript (StaticR js_bootstrap_min_js)
         toWidget [lucius|
             li {
                 display: inline-block;
@@ -28,6 +30,7 @@ getResponsavelR = do
             
         |]
         [whamlet|
+            
             <h1> Responsavel
             <ul>
                 <li> <a href=@{CadastrarResponsavelR}>  Cadastrar Responsavel
@@ -40,7 +43,10 @@ getCadastrarResponsavelR :: Handler Html
 getCadastrarResponsavelR = do 
     (widget,enctype) <- generateFormPost formResponsavel
     defaultLayout $ do
+        addStylesheet $ (StaticR css_bootstrap_min_css)
+        addScript (StaticR js_bootstrap_min_js)
         [whamlet|
+            <li> <a href=@{ResponsavelR}>  Voltar
             <form action=@{CadastrarResponsavelR} method=post>
                 ^{widget}
                 <input type="submit" value="Cadastrar">

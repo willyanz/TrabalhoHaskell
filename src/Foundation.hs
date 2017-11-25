@@ -31,7 +31,7 @@ instance Yesod App where
     isAuthorized HomeR _ = return Authorized
     isAuthorized LoginR _ = return Authorized
     isAuthorized LogoutR _ = return Authorized
-    isAuthorized FuncionarioR _ = return Authorized
+    isAuthorized FuncionarioR _ = ehAdm
     isAuthorized MarinheiroR _ = ehFuncionario
     isAuthorized ResponsavelR _ = ehFuncionario
     isAuthorized EmbarcacaoR _ = ehFuncionario
@@ -40,6 +40,13 @@ instance Yesod App where
 ehFuncionario :: Handler AuthResult
 ehFuncionario = do
     sessao <- lookupSession "_Funcionario"
+    case sessao of 
+        Nothing -> return AuthenticationRequired
+        (Just _) -> return Authorized
+        
+ehAdm :: Handler AuthResult
+ehAdm = do
+    sessao <- lookupSession "_Adm"
     case sessao of 
         Nothing -> return AuthenticationRequired
         (Just _) -> return Authorized
@@ -56,3 +63,19 @@ instance RenderMessage App FormMessage where
 
 instance HasHttpManager App where
     getHttpManager = appHttpManager
+
+-- verifica o tipo de usuario logado
+lookupLogin :: Handler Text
+lookupLogin = do
+    logf <- lookupSession "_Funcionario"
+    case logf of
+        (Just _) -> return "_Funcionario"
+        Nothing -> do 
+           logr <- lookupSession "_Responsavel"
+           case logr of
+                (Just _) -> return "_Responsavel"
+                Nothing -> do
+                    logadm <- lookupSession "_Adm"
+                    case logadm of
+                        (Just _) -> return "_Adm"
+                        Nothing -> return "_Visitante"
