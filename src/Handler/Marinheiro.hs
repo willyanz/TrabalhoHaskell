@@ -32,10 +32,36 @@ getMarinheiroR = do
         |]
         [whamlet|
             <h1> Funcionarios
-            <ul>
-                <li> <a href=@{CadastrarMarinheiroR}>  Cadastrar Marinheiro
+            
+                {--<li> <a href=@{CadastrarMarinheiroR}>  Cadastrar Marinheiro
                 <li> <a href=@{ListarMarinheiroR}>  Listar Marinheiro
-                <li> <a href=@{HomeR}>  Home
+                <li> <a href=@{HomeR}>  Home--}
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                 <div class="container">
+                 <div class="navbar-header">
+                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                 <span class="sr-only">Toggle navigation
+                 <span class="icon-bar">
+                 <span class="icon-bar">
+                 <span class="icon-bar">
+                 <a class="navbar-brand" href="">Scale Service
+        
+                 <div id="navbar" class="navbar-collapse collapse">
+                 <form class="navbar-form navbar-right">
+                 <div class="form-group">
+            
+                 <div class="form-group">
+
+
+                 <div class="jumbotron">
+                 <div class="container">
+                 <h1>TECH PARSE
+                 <p>Empresa de tecnologia voltada para o desenvolvimento de Softwares e aplicativos Mobile
+                 <p><a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
+      
+               
+    
+
         |]
 
 
