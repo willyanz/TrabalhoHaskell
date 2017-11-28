@@ -75,7 +75,11 @@ lookupLogin = do
            case logr of
                 (Just _) -> return "_Responsavel"
                 Nothing -> do
-                    logadm <- lookupSession "_Adm"
-                    case logadm of
-                        (Just _) -> return "_Adm"
-                        Nothing -> return "_Visitante"
+                    logm <- lookupSession "_Marinheiro"
+                    case logm of
+                        (Just _) -> return "_Marinheiro"
+                        Nothing -> do
+                            logadm <- lookupSession "_Adm"
+                            case logadm of
+                                (Just _) -> return "_Adm"
+                                Nothing -> return "_Visitante"

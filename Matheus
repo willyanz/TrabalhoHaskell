@@ -1,0 +1,28 @@
+  <div class="row">
+                 <h2>Propostas
+                 
+                 
+	             <div class="col-md-4">
+                    <h2>Propostas
+                    <p>Nossas propostas variam de acordo com cada cliente, pois para nos, cada cliente e unico, e deve ser tratamento e analisados de modos diferentes... 
+                    <p><a class="btn btn-default" href="Propostas.html" role="button">Saiba Mais »
+                 
+                 <div class="col-md-4">
+                    <h2>Parceiros
+                    
+                    <p>Saiba o que e necessario para se tornar um parceiro da Tech Parse, quais serao suas vantagens e deixe nos mostrar o que podemos oferecer a voce
+		            <p><a class="btn btn-default" href="Parceiros.html" role="button">Saiba Mais »
+       
+                 <div class="col-md-4">
+                    <h2>Contato
+                    <p>Entre em contato conosco e nos diga a sua opiniao/sugestao para assim sempre podermos melhorar nosso relacionamento com voce
+                    <p><a class="btn btn-default" href="Contato.html" role="button">Saiba Mais »
+        
+      
+
+                <hr>
+
+                <footer>
+                <p>  Tech Parse, LTDA.
+
+	  

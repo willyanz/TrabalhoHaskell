@@ -31,7 +31,7 @@ getMarinheiroR = do
             
         |]
         [whamlet|
-            <h1> Funcionarios
+            <h1> Marinheiros
             
                 {--<li> <a href=@{CadastrarMarinheiroR}>  Cadastrar Marinheiro
                 <li> <a href=@{ListarMarinheiroR}>  Listar Marinheiro
