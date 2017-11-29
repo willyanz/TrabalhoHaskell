@@ -14,7 +14,7 @@ import Database.Persist.Postgresql
 formEmbarcacao :: Form Embarcacao
 formEmbarcacao = renderDivs $ Embarcacao 
     <$> areq intField     "Nº de inscrição: " Nothing
-    <*>   areq (selectField $ optionsPersistKey [] [] responsavelNm_responsavel)  "Responsavel: " Nothing
+    <*> areq (selectField $ optionsPersistKey [] [] responsavelNm_responsavel)  "Responsavel: " Nothing
     <*> areq textField "Nome da Embarcação: " Nothing
 
 getEmbarcacaoR :: Handler Html

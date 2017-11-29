@@ -13,7 +13,7 @@ import Database.Persist.Postgresql
 
 formMarinheiro :: Form Marinheiro
 formMarinheiro = renderBootstrap $ Marinheiro
-    <$> areq textField     "Nome: " Nothing
+    <$> areq textField     "Nome: " Nothing 
     <*> areq emailField    "Email: " Nothing
     <*> areq passwordField "Senha: "Nothing
 
@@ -21,7 +21,35 @@ formMarinheiro = renderBootstrap $ Marinheiro
 getMarinheiroR :: Handler Html
 getMarinheiroR = do
     defaultLayout $ do
+    
         addStylesheet $ (StaticR css_bootstrap_min_css)
+        addStylesheet $ (StaticR css_ie10viewportbugworkaround_css)
+        addStylesheet $ (StaticR css_jumbotron_css)
+        addScript (StaticR js_ieemulationmodeswarning_js)
+        addScript (StaticR js_bootstrap_min_js)
+       
+        
+        toWidget [lucius|
+            li {
+                display: inline-block;
+                list-style:  none;
+            }
+            
+        |]
+        [whamlet|
+        
+                <li> <a href=@{CadastrarMarinheiroR}>  Cadastrar Marinheiro
+                <li> <a href=@{ListarMarinheiroR}>  Listar Marinheiro
+                <li> <a href=@{HomeR}> Home
+    |]
+
+
+getCadastrarMarinheiroR :: Handler Html
+getCadastrarMarinheiroR = do
+    (widget, enctype) <- generateFormPost formMarinheiro
+    defaultLayout $ do
+        addStylesheet $ (StaticR css_bootstrap_min_css)
+        addStylesheet $ (StaticR css_signin_css)
         addScript (StaticR js_bootstrap_min_js)
         toWidget [lucius|
             li {
@@ -31,51 +59,15 @@ getMarinheiroR = do
             
         |]
         [whamlet|
-            <h1> Marinheiros
-            
-                {--<li> <a href=@{CadastrarMarinheiroR}>  Cadastrar Marinheiro
-                <li> <a href=@{ListarMarinheiroR}>  Listar Marinheiro
-                <li> <a href=@{HomeR}>  Home--}
-                <nav class="navbar navbar-inverse navbar-fixed-top">
-                 <div class="container">
-                 <div class="navbar-header">
-                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                 <span class="sr-only">Toggle navigation
-                 <span class="icon-bar">
-                 <span class="icon-bar">
-                 <span class="icon-bar">
-                 <a class="navbar-brand" href="">Scale Service
         
-                 <div id="navbar" class="navbar-collapse collapse">
-                 <form class="navbar-form navbar-right">
-                 <div class="form-group">
-            
-                 <div class="form-group">
-
-
-                 <div class="jumbotron">
-                 <div class="container">
-                 <h1>TECH PARSE
-                 <p>Empresa de tecnologia voltada para o desenvolvimento de Softwares e aplicativos Mobile
-                 <p><a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
-      
-               
-    
-
-        |]
-
-
-getCadastrarMarinheiroR :: Handler Html
-getCadastrarMarinheiroR = do
-    (widget, enctype) <- generateFormPost formMarinheiro
-    defaultLayout $ do
-        addStylesheet $ (StaticR css_bootstrap_min_css)
-        addScript (StaticR js_bootstrap_min_js)
-        [whamlet|
-            <li> <a href=@{MarinheiroR}>  Voltar
-            <form action=@{CadastrarMarinheiroR} method=post>
-                ^{widget}
-                <input type="submit" value="Cadastrar">
+        <div class="container">
+            <form class="form-signin">
+                <h2 class="form-signin-heading">Cadastre - Se
+                <form class="sign-in" action=@{CadastrarMarinheiroR} method=post >
+                    ^{widget}
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastre se
+                
+                
             
         |]
 

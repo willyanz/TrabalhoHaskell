@@ -16,27 +16,30 @@ getHomeR = do
     logado' <- lookupSession logado
     defaultLayout $ do
         addStylesheet $ (StaticR css_bootstrap_min_css)
+        addStylesheet $ (StaticR css_ie10viewportbugworkaround_css)
+        addStylesheet $ (StaticR css_jumbotron_css)
+        addScript (StaticR js_ieemulationmodeswarning_js)
         addScript (StaticR js_bootstrap_min_js)
         toWidget [lucius|
             li {
                 display: inline-block;
                 list-style:  none;
             }
-            
         |]
-        [whamlet|
-                ^{home logado} 
-            <ul>
-                
+        [whamlet|   
+            ^{home logado} 
+            <ul>    
                 $maybe logar <- logado'
-                    <li> 
-                        <form action=@{LogoutR} method=post>
-                            <input type="submit" value="Logout">
+               
+                     <li> 
+                         <form action=@{LogoutR} method=post>
+                             <input type="submit" value="Logout">
                 $nothing
                     <li> <a href=@{LoginR}> Login
+        
         |]
-
--- home de acordo com o tipo de usuario
+      
+--home de acordo com o tipo de usuario
 home :: Text -> Widget
 home "_Adm" = 
     [whamlet|
@@ -47,13 +50,45 @@ home "_Adm" =
     |]
 home "_Funcionario" =
     [whamlet|
-        <h1> Coisas de funcionario
-        <h1> _{MsgBemvindo} - 
-                    <br>
-                    
-                    <li> <a href=@{ResponsavelR}> Responsáveis 
-                    <li> <a href=@{EmbarcacaoR}> Embarcações
-                    <li> <a href=@{MarinheiroR}> Marinheiro
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                            <a class="navbar-brand" href="">Scale Service
+                            <a class="navbar-brand" href="">Adm
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <form class="navbar-form navbar-right">
+                                <div class="form-group">
+                                <div class="form-group">
+                                
+                                
+                <div class="jumbotron">
+                    <div class="container">
+                        <h1>TECH PARSE
+                        <p>Empresa de tecnologia voltada para o desenvolvimento de Softwares e aplicativos Mobile
+                        <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
+                <div class="container">
+                    <div class="col-md-4">
+                        <h2>Marinheiros
+                        <p>Gerenciamento de Seus Colabores e Embarcacoes
+                        <a class="btn btn-default" href=@{MarinheiroR} role="button">Saiba Mais »
+                    <div class="col-md-4">
+                        <h2>Embarcacoes
+                        <p>Cadastro e Controle de Embarcacoes
+                        <a class="btn btn-default" href=@{EmbarcacaoR} role="button">Saiba Mais»
+                    <div class="col-md-4">
+                        <h2>Colaboradores
+                        <p>Controle de suas viagens e tenha um melhor gerenciamento
+                        <a class="btn btn-default" href=@{ResponsavelR} role="button">Saiba Mais »
+                <footer>
+                    <center><p>© 2016 Tech Parse, LTDA.
+      
+    
+        
+
     |]
 home "_Responsavel" =
     [whamlet|

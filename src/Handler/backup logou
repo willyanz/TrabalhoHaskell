@@ -1,4 +1,22 @@
-@import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
+
+                
+                
+                    ^{home logado} 
+            <ul>
+                
+                $maybe logar <- logado'
+                    <li> 
+                        <form action=@{LogoutR} method=post>
+                            <input type="submit" value="Logout">
+                $nothing
+                    <li> <a href=@{LoginR}> Login
+                
+                
+                
+                
+                
+                
+                @import url("https://fonts.googleapis.com/css?family=Lato:400,700,400italic");
 /*!
  * bootswatch v3.3.7
  * Homepage: http://bootswatch.com
