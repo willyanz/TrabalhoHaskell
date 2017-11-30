@@ -16,8 +16,8 @@ getHomeR = do
     logado' <- lookupSession logado
     defaultLayout $ do
         addStylesheet $ (StaticR css_bootstrap_min_css)
-        addStylesheet $ (StaticR css_ie10viewportbugworkaround_css)
         addStylesheet $ (StaticR css_jumbotron_css)
+        addStylesheet $ (StaticR css_signin_css)
         addScript (StaticR js_ieemulationmodeswarning_js)
         addScript (StaticR js_bootstrap_min_js)
         toWidget [lucius|
@@ -35,7 +35,7 @@ getHomeR = do
                          <form action=@{LogoutR} method=post>
                              <input type="submit" value="Logout">
                 $nothing
-                    <li> <a href=@{LoginR}> Login
+                
         
         |]
       
@@ -57,8 +57,7 @@ home "_Funcionario" =
                                 <span class="icon-bar">
                                 <span class="icon-bar">
                                 <span class="icon-bar">
-                            <a class="navbar-brand" href="">Scale Service
-                            <a class="navbar-brand" href="">Adm
+                            <a class="navbar-brand" href=@{LoginR}>Login
                         <div id="navbar" class="navbar-collapse collapse">
                             <form class="navbar-form navbar-right">
                                 <div class="form-group">
@@ -67,24 +66,24 @@ home "_Funcionario" =
                                 
                 <div class="jumbotron">
                     <div class="container">
-                        <h1>TECH PARSE
-                        <p>Empresa de tecnologia voltada para o desenvolvimento de Softwares e aplicativos Mobile
+                        <h1>Seja Bem Vindo A Venesa Santista
+                        <p>Sistema de Controle De Travessias
                         <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
                 <div class="container">
                     <div class="col-md-4">
-                        <h2>Marinheiros
-                        <p>Gerenciamento de Seus Colabores e Embarcacoes
+                        <h2>Embarcações
+                        <p>Veja em qual embarcação esta habilitado
                         <a class="btn btn-default" href=@{MarinheiroR} role="button">Saiba Mais »
                     <div class="col-md-4">
-                        <h2>Embarcacoes
-                        <p>Cadastro e Controle de Embarcacoes
+                        <h2>Viagens
+                        <p>Gerencia suas Viagens
                         <a class="btn btn-default" href=@{EmbarcacaoR} role="button">Saiba Mais»
                     <div class="col-md-4">
-                        <h2>Colaboradores
-                        <p>Controle de suas viagens e tenha um melhor gerenciamento
+                        <h2>Responsáveis
+                        <p>Contato direto com Responsáveis pelas Embarcações
                         <a class="btn btn-default" href=@{ResponsavelR} role="button">Saiba Mais »
                 <footer>
-                    <center><p>© 2016 Tech Parse, LTDA.
+                    <center><p>© 2017 Tech Parse, LTDA.
       
     
         
@@ -92,14 +91,101 @@ home "_Funcionario" =
     |]
 home "_Responsavel" =
     [whamlet|
-        <h1> Coisas de responsável
-            <li> <a href=@{ListarEmbarcacaoR}> Minhas Embarcações
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="icon-bar">
+                            <span class="icon-bar">
+                            <span class="icon-bar">
+                        <a class="navbar-brand" href=@{LoginR}>Login
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <form class="navbar-form navbar-right">
+                            <div class="form-group">
+                            <div class="form-group">
+                                
+                                
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Seja Bem Vindo A Venesa Santista
+                <p>Sistema de Controle De Travessias
+                <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
+        <div class="container">
+            <div class="col-md-4">
+                <h2>Embarcações
+                <p>Veja Suas embarcações Cadastradas
+                <a class="btn btn-default" href=@{ListarEmbarcacaoR} role="button">Saiba Mais »
+            <div class="col-md-4">
+                <h2>Viagens
+                <p>Gerencia as Viagens de Suas Embarcações e Colaboradores
+                <a class="btn btn-default" href="" role="button">Saiba Mais»
+            <div class="col-md-4">
+                <h2>Colaboradores
+                <p>Gerencie Seus Colaboradores Cadastrados
+                <a class="btn btn-default" href=@{ListarMarinheiroR} role="button">Saiba Mais »
+        <footer>
+            <center><p>© 2017 Tech Parse, LTDA.
     |]
 home "_Marinheiro" =
     [whamlet|
-        <h1> Coisas de marinheiro
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="icon-bar">
+                            <span class="icon-bar">
+                            <span class="icon-bar">
+                        <a class="navbar-brand" href=@{LoginR}>Login
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <form class="navbar-form navbar-right">
+                            <div class="form-group">
+                            <div class="form-group">
+                                
+                                
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Seja Bem Vindo A Venesa Santista
+                <p>Sistema de Controle De Travessias
+                <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
+        <div class="container">
+            <div class="col-md-4">
+                <h2>Embarcações
+                <p>Veja em qual embarcação esta habilitado
+                <a class="btn btn-default" href=@{MarinheiroR} role="button">Saiba Mais »
+            <div class="col-md-4">
+                <h2>Viagens
+                <p>Gerencia suas Viagens
+                <a class="btn btn-default" href=@{EmbarcacaoR} role="button">Saiba Mais»
+            <div class="col-md-4">
+                <h2>Responsáveis
+                <p>Contato direto com Responsáveis pelas Embarcações
+                <a class="btn btn-default" href=@{ResponsavelR} role="button">Saiba Mais »
+        <footer>
+            <center><p>© 2017 Tech Parse, LTDA.
     |]
 home _ = 
     [whamlet|
-        <h1> Coisas de visitante
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="icon-bar">
+                            <span class="icon-bar">
+                            <span class="icon-bar">
+                        <a class="navbar-brand" href=@{LoginR}>Login
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <form class="navbar-form navbar-right">
+                            <div class="form-group">
+                            <div class="form-group">
+                                
+                                
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Seja Bem Vindo A Venesa Santista
+                <p>Sistema de Controle De Travessias
+                <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
+      
+        <footer>
+            <center><p>© 2017 Tech Parse, LTDA.
+    
     |]

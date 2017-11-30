@@ -11,7 +11,7 @@ import Database.Persist.Postgresql
 
 -- formulario de login
 formLogin :: Form (Text, Text)
-formLogin = renderDivs $ (,)
+formLogin = renderBootstrap $ (,)
     <$> areq emailField "Email: " Nothing
     <*> areq passwordField "Senha: " Nothing
 
@@ -39,11 +39,12 @@ getLoginR = do
         addStylesheet $ (StaticR css_bootstrap_min_css)
         addScript (StaticR js_bootstrap_min_js)
         [whamlet|
-            $maybe mensa <- msg 
-                <h1> Usuario Invalido
-            <form action=@{LoginR} method=post>
-                ^{widget}
-                <input type="submit" value="Login">  
+             $maybe mensa <- msg 
+                    <h1> Usuario Invalido
+            <h2 class="form-signin-heading">Login
+            <form class="sign-in" action=@{LoginR} method=post> 
+                    ^{widget}
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login
         |]
 
 -- autentifica os dados recebidos pelo form 
@@ -82,3 +83,5 @@ postLogoutR :: Handler Html
 postLogoutR = do 
     lookupLogin >>= deleteSession 
     redirect HomeR
+    
+    

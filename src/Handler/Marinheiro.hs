@@ -65,7 +65,7 @@ getCadastrarMarinheiroR = do
                 <h2 class="form-signin-heading">Cadastre - Se
                 <form class="sign-in" action=@{CadastrarMarinheiroR} method=post >
                     ^{widget}
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastre se
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastre se
                 
                 
             
