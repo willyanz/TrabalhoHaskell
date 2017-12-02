@@ -37,7 +37,8 @@ getMarinheiroR = do
             
         |]
         [whamlet|
-        
+            <h1> Marinheiros
+            <ul>
                 <li> <a href=@{CadastrarMarinheiroR}>  Cadastrar Marinheiro
                 <li> <a href=@{ListarMarinheiroR}>  Listar Marinheiro
                 <li> <a href=@{HomeR}> Home
@@ -59,13 +60,14 @@ getCadastrarMarinheiroR = do
             
         |]
         [whamlet|
-        
-        <div class="container">
-            <form class="form-signin">
-                <h2 class="form-signin-heading">Cadastre - Se
-                <form class="sign-in" action=@{CadastrarMarinheiroR} method=post >
-                    ^{widget}
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Cadastre se
+            <li> 
+                <a href=@{FuncionarioR}>  Voltar
+            <div class="container">
+
+            <h2 class="form-signin-heading">Cadastrar
+            <form class="sign-in" action=@{CadastrarMarinheiroR} method=post >
+                ^{widget}
+                <button class="btn btn-lg btn-primary btn-block" type="submit">Concluir
                 
                 
             

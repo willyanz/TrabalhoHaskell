@@ -41,10 +41,11 @@ getLoginR = do
         [whamlet|
              $maybe mensa <- msg 
                     <h1> Usuario Invalido
-            <h2 class="form-signin-heading">Login
-            <form class="sign-in" action=@{LoginR} method=post> 
-                    ^{widget}
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">Login
+            <div class="container">
+                <h2 class="form-signin-heading">Login
+                <form class="sign-in" action=@{LoginR} method=post> 
+                        ^{widget}
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Login
         |]
 
 -- autentifica os dados recebidos pelo form 

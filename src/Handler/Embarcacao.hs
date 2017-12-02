@@ -48,10 +48,11 @@ getCadastrarEmbarcacaoR = do
         addStylesheet $ (StaticR css_bootstrap_min_css)
         addScript (StaticR js_bootstrap_min_js)
         [whamlet|
-            <li> <a href=@{EmbarcacaoR}>  Voltar
+            <li>
+                <a href=@{EmbarcacaoR}>  Voltar
             <form action=@{CadastrarEmbarcacaoR} method=post>
                 ^{widget}
-                <input type="submit" value="Cadastrar">
+                <inpost type="submit" value="Cadastrar">
         |]
 
 

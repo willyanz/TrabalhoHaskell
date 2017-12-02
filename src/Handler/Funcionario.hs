@@ -12,7 +12,7 @@ import Database.Persist.Postgresql
 
 -- formulário de cadastro de funcionarios
 formFuncionario :: Form Funcionario
-formFuncionario = renderDivs $ Funcionario 
+formFuncionario = renderBootstrap $ Funcionario 
     <$> areq textField     "Nome: " Nothing
     <*> areq emailField    "Email: " Nothing
     <*> areq passwordField "Senha: " Nothing
@@ -46,7 +46,8 @@ getCadastrarFuncionarioR = do
         addStylesheet $ (StaticR css_bootstrap_min_css)
         addScript (StaticR js_bootstrap_min_js)
         [whamlet|
-            <li> <a href=@{FuncionarioR}>  Voltar
+            <li> 
+                <a href=@{FuncionarioR}>  Voltar
             <form action=@{CadastrarFuncionarioR} method=post>
                 ^{widget}
                 <input type="submit" value="Cadastrar">
@@ -66,13 +67,47 @@ postCadastrarFuncionarioR = do
  
 
 getListarFuncionarioR :: Handler Html
-getListarFuncionarioR = undefined
+getListarFuncionarioR = do 
+    funcionarios <- runDB $ selectList [] [Asc FuncionarioNm_funcionario]
+    defaultLayout $ do 
+        addStylesheet $ (StaticR css_bootstrap_min_css)
+        addScript (StaticR js_bootstrap_min_js)
+        [whamlet|
+            <table>
+                <thead>
+                    <tr>
+                        <td> Id
+                        <td> Nome 
+                        <td> Email 
+                        <td> 
+                
+                <tbody>
+                    $forall (Entity fid funcionario) <- funcionarios
+                        <tr> 
+                            <td> #{fromSqlKey fid}
+                            <td> #{funcionarioNm_funcionario funcionario}
+                            <td> #{funcionarioEmailf funcionario}
+                            <td> 
+                                <form action=@{EditarFuncionarioR fid} method=post>
+                                    <input type="submit" value="Editar">
+                            <td>
+                                <form action=@{ExcluirFuncionarioR fid} method=post>
+                                    <input type="submit" value="Deletar">
+                            
+        |]
 
-putEditarFuncionarioR :: FuncionarioId -> Handler Html
-putEditarFuncionarioR = undefined
+postEditarFuncionarioR :: FuncionarioId -> Handler Html
+postEditarFuncionarioR fid = do 
+    _ <- runDB $ get404 fid
+    novoFunc <- requireJsonBody :: Handler Funcionario
+    runDB $ replace fid novoFunc
+    sendStatusJSON noContent204 (object ["resp" .= ("UPDATED " ++ show (fromSqlKey fid))])
 
 getBuscarFuncionarioR :: FuncionarioId -> Handler Html
 getBuscarFuncionarioR = undefined
 
 postExcluirFuncionarioR :: FuncionarioId -> Handler Html
-postExcluirFuncionarioR = undefined
+postExcluirFuncionarioR fid = do 
+    _ <- runDB $ get404 fid
+    runDB $ delete fid
+    redirect ListarFuncionarioR

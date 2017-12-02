@@ -30,10 +30,10 @@ getHomeR = do
             ^{home logado} 
             <ul>    
                 $maybe logar <- logado'
-               
-                     <li> 
-                         <form action=@{LogoutR} method=post>
-                             <input type="submit" value="Logout">
+                    <ul>
+                        <li> 
+                            <form action=@{LogoutR} method=post>
+                                <input type="submit" value="Logout">
                 $nothing
                 
         
@@ -47,6 +47,9 @@ home "_Adm" =
         <h1> _{MsgBemvindo} - Adm 
             <br>
             <li> <a href=@{FuncionarioR}> Funcionarios
+             <li> 
+                 <form action=@{LogoutR} method=post>
+                    <input type="submit" value="Logout">
     |]
 home "_Funcionario" =
     [whamlet|
@@ -57,7 +60,7 @@ home "_Funcionario" =
                                 <span class="icon-bar">
                                 <span class="icon-bar">
                                 <span class="icon-bar">
-                            <a class="navbar-brand" href=@{LoginR}>Login
+                            <a class="navbar-brand" href=@{LogoutR}>Logout
                         <div id="navbar" class="navbar-collapse collapse">
                             <form class="navbar-form navbar-right">
                                 <div class="form-group">
@@ -71,11 +74,11 @@ home "_Funcionario" =
                         <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
                 <div class="container">
                     <div class="col-md-4">
-                        <h2>Embarcações
+                        <h2>Marinheiros
                         <p>Veja em qual embarcação esta habilitado
                         <a class="btn btn-default" href=@{MarinheiroR} role="button">Saiba Mais »
                     <div class="col-md-4">
-                        <h2>Viagens
+                        <h2>Embarcações
                         <p>Gerencia suas Viagens
                         <a class="btn btn-default" href=@{EmbarcacaoR} role="button">Saiba Mais»
                     <div class="col-md-4">
@@ -83,7 +86,7 @@ home "_Funcionario" =
                         <p>Contato direto com Responsáveis pelas Embarcações
                         <a class="btn btn-default" href=@{ResponsavelR} role="button">Saiba Mais »
                 <footer>
-                    <center><p>© 2017 Tech Parse, LTDA.
+                    <center><p>© Garcia lindo
       
     
         
@@ -98,7 +101,7 @@ home "_Responsavel" =
                             <span class="icon-bar">
                             <span class="icon-bar">
                             <span class="icon-bar">
-                        <a class="navbar-brand" href=@{LoginR}>Login
+                        <a class="navbar-brand" href=@{LogoutR}>Logout
                     <div id="navbar" class="navbar-collapse collapse">
                         <form class="navbar-form navbar-right">
                             <div class="form-group">
@@ -110,21 +113,8 @@ home "_Responsavel" =
                 <h1>Seja Bem Vindo A Venesa Santista
                 <p>Sistema de Controle De Travessias
                 <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
-        <div class="container">
-            <div class="col-md-4">
-                <h2>Embarcações
-                <p>Veja Suas embarcações Cadastradas
-                <a class="btn btn-default" href=@{ListarEmbarcacaoR} role="button">Saiba Mais »
-            <div class="col-md-4">
-                <h2>Viagens
-                <p>Gerencia as Viagens de Suas Embarcações e Colaboradores
-                <a class="btn btn-default" href="" role="button">Saiba Mais»
-            <div class="col-md-4">
-                <h2>Colaboradores
-                <p>Gerencie Seus Colaboradores Cadastrados
-                <a class="btn btn-default" href=@{ListarMarinheiroR} role="button">Saiba Mais »
         <footer>
-            <center><p>© 2017 Tech Parse, LTDA.
+            <center><p>© Garcia lindo
     |]
 home "_Marinheiro" =
     [whamlet|
@@ -135,7 +125,7 @@ home "_Marinheiro" =
                             <span class="icon-bar">
                             <span class="icon-bar">
                             <span class="icon-bar">
-                        <a class="navbar-brand" href=@{LoginR}>Login
+                        <a class="navbar-brand" href=@{LogoutR}>Logout
                     <div id="navbar" class="navbar-collapse collapse">
                         <form class="navbar-form navbar-right">
                             <div class="form-group">
@@ -145,23 +135,11 @@ home "_Marinheiro" =
         <div class="jumbotron">
             <div class="container">
                 <h1>Seja Bem Vindo A Venesa Santista
-                <p>Sistema de Controle De Travessias
+                <p>Sistema de Controle De Travessias da Catraia
                 <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
-        <div class="container">
-            <div class="col-md-4">
-                <h2>Embarcações
-                <p>Veja em qual embarcação esta habilitado
-                <a class="btn btn-default" href=@{MarinheiroR} role="button">Saiba Mais »
-            <div class="col-md-4">
-                <h2>Viagens
-                <p>Gerencia suas Viagens
-                <a class="btn btn-default" href=@{EmbarcacaoR} role="button">Saiba Mais»
-            <div class="col-md-4">
-                <h2>Responsáveis
-                <p>Contato direto com Responsáveis pelas Embarcações
-                <a class="btn btn-default" href=@{ResponsavelR} role="button">Saiba Mais »
+        
         <footer>
-            <center><p>© 2017 Tech Parse, LTDA.
+            <center><p>>© Garcia lindo
     |]
 home _ = 
     [whamlet|
@@ -186,6 +164,6 @@ home _ =
                 <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
       
         <footer>
-            <center><p>© 2017 Tech Parse, LTDA.
+            <center><p>© Garcia lindo
     
     |]
