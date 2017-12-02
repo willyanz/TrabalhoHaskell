@@ -33,7 +33,7 @@
 /funcionario/cadastrar				    CadastrarFuncionarioR   GET POST
 /funcionario/listar					    ListarFuncionarioR	    GET
 /funcionario/buscar/#FuncionarioId		BuscarFuncionarioR	    GET
-/funcionario/editar/#FuncionarioId		EditarFuncionarioR	    POST 
+/funcionario/editarsenha/#FuncionarioId	EditarSFuncionarioR	    PATCH 
 /funcionario/excluir/#FuncionarioId		ExcluirFuncionarioR	    POST
 
 

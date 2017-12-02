@@ -10,6 +10,11 @@ import Import
 import Network.HTTP.Types.Status
 import Database.Persist.Postgresql
 
+-- tipo criado para alteração de senha
+data Senhaf = Senhaf {senhaf::Text} deriving Generic
+instance ToJSON Senhaf where
+instance FromJSON Senhaf where
+
 -- formulário de cadastro de funcionarios
 formFuncionario :: Form Funcionario
 formFuncionario = renderBootstrap $ Funcionario 
@@ -65,7 +70,7 @@ postCadastrarFuncionarioR = do
             setMessage $ [shamlet| Falha no Cadastro |]
             redirect CadastrarFuncionarioR
  
-
+-- listagem de funcionarios
 getListarFuncionarioR :: Handler Html
 getListarFuncionarioR = do 
     funcionarios <- runDB $ selectList [] [Asc FuncionarioNm_funcionario]
@@ -88,24 +93,26 @@ getListarFuncionarioR = do
                             <td> #{funcionarioNm_funcionario funcionario}
                             <td> #{funcionarioEmailf funcionario}
                             <td> 
-                                <form action=@{EditarFuncionarioR fid} method=post>
-                                    <input type="submit" value="Editar">
+                                <form action=@{EditarSFuncionarioR fid} method=post>
+                                    <input type="submit" value="Trocar Senha">
                             <td>
                                 <form action=@{ExcluirFuncionarioR fid} method=post>
                                     <input type="submit" value="Deletar">
                             
         |]
 
-postEditarFuncionarioR :: FuncionarioId -> Handler Html
-postEditarFuncionarioR fid = do 
+-- alteração de senha
+patchEditarSFuncionarioR :: FuncionarioId -> Handler Html
+patchEditarSFuncionarioR fid = do 
     _ <- runDB $ get404 fid
-    novoFunc <- requireJsonBody :: Handler Funcionario
-    runDB $ replace fid novoFunc
-    sendStatusJSON noContent204 (object ["resp" .= ("UPDATED " ++ show (fromSqlKey fid))])
+    novaSenha <- requireJsonBody :: Handler Senhaf
+    runDB $ update fid [FuncionarioSenhaf =. (senhaf novaSenha)]
+    sendStatusJSON noContent204 (object ["resp" .= ("Atualizado " ++ show (fromSqlKey fid))])
 
 getBuscarFuncionarioR :: FuncionarioId -> Handler Html
 getBuscarFuncionarioR = undefined
 
+-- exclusao de funcioanrios
 postExcluirFuncionarioR :: FuncionarioId -> Handler Html
 postExcluirFuncionarioR fid = do 
     _ <- runDB $ get404 fid
