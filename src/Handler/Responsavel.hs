@@ -12,7 +12,7 @@ import Database.Persist.Postgresql
 
 -- formulário de cadastro de Responsavel
 formResponsavel :: Form Responsavel
-formResponsavel = renderDivs $ Responsavel 
+formResponsavel = renderBootstrap $ Responsavel 
     <$> areq textField     "Nome: " Nothing
     <*> areq emailField    "Email: " Nothing
     <*> areq passwordField "Senha: " Nothing
@@ -46,11 +46,13 @@ getCadastrarResponsavelR = do
         addStylesheet $ (StaticR css_bootstrap_min_css)
         addScript (StaticR js_bootstrap_min_js)
         [whamlet|
-            <li> 
-                <a href=@{ResponsavelR}>  Voltar
-            <form action=@{CadastrarResponsavelR} method=post>
-                ^{widget}
-                <inpost type="submit" value="Cadastrar">
+            <div class="container">
+
+                <h2 class="form-signin-heading">Cadastrar Responsavel
+                <form class="sign-in" action=@{CadastrarResponsavelR} method=post >
+                    ^{widget}
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Concluir
+            
         |]
 
 -- inclusao do formulario preenchido no banco

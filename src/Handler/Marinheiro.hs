@@ -64,10 +64,10 @@ getCadastrarMarinheiroR = do
                 <a href=@{FuncionarioR}>  Voltar
             <div class="container">
 
-            <h2 class="form-signin-heading">Cadastrar
-            <form class="sign-in" action=@{CadastrarMarinheiroR} method=post >
-                ^{widget}
-                <button class="btn btn-lg btn-primary btn-block" type="submit">Concluir
+                <h2 class="form-signin-heading">Cadastrar Maarinheiro
+                <form class="sign-in" action=@{CadastrarMarinheiroR} method=post >
+                    ^{widget}
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Concluir
                 
                 
             

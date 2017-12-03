@@ -12,7 +12,7 @@ import Database.Persist.Postgresql
 
 -- formulário de cadastro de Embarcacao
 formEmbarcacao :: Form Embarcacao
-formEmbarcacao = renderDivs $ Embarcacao 
+formEmbarcacao = renderBootstrap $ Embarcacao 
     <$> areq intField     "Nº de inscrição: " Nothing
     <*> areq (selectField $ optionsPersistKey [] [] responsavelNm_responsavel)  "Responsavel: " Nothing
     <*> areq textField "Nome da Embarcação: " Nothing
@@ -49,10 +49,13 @@ getCadastrarEmbarcacaoR = do
         addScript (StaticR js_bootstrap_min_js)
         [whamlet|
             <li>
-                <a href=@{EmbarcacaoR}>  Voltar
-            <form action=@{CadastrarEmbarcacaoR} method=post>
-                ^{widget}
-                <inpost type="submit" value="Cadastrar">
+            <div class="container">
+
+                <h2 class="form-signin-heading">Cadastrar Embarcação
+                <form class="sign-in" action=@{CadastrarEmbarcacaoR} method=post >
+                    ^{widget}
+                    <button class="btn btn-lg btn-primary btn-block" type="submit">Concluir
+               
         |]
 
 
