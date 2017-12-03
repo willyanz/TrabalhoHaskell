@@ -37,11 +37,43 @@ getMarinheiroR = do
             
         |]
         [whamlet|
-            <h1> Marinheiros
-            <ul>
-                <li> <a href=@{CadastrarMarinheiroR}>  Cadastrar Marinheiro
-                <li> <a href=@{ListarMarinheiroR}>  Listar Marinheiro
-                <li> <a href=@{HomeR}> Home
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                            <a class="navbar-brand" href=@{HomeR}>Home
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <form class="navbar-form navbar-right">
+                                <div class="form-group">
+                                <div class="form-group">
+                                
+                                
+                <div class="jumbotron">
+                    <div class="container">
+                        <h1>Venesa Santista
+                        <p>Marinheiros, escolha o que deseja fazer
+                        <a class="btn btn-primary btn-lg" href="" role="button">Saiba Mais »
+                <div class="container">
+                    <div class="col-md-4">
+                        <h2>Cadastrar Marinheiros
+                        <p>Cadastre novos Marinheiros e vincule-as a uma Embarcação ou mais.
+                        <a class="btn btn-default" href=@{CadastrarMarinheiroR} role="button">Saiba Mais »
+                    <div class="col-md-4">
+                        <h2>Listar Marinheiros
+                        <p>Veja todos os marinheiros cadastrados no Sistema.
+                        <a class="btn btn-default" href=@{ListarMarinheiroR} role="button">Saiba Mais»
+                    <div class="col-md-4">
+                        <h2>Desligamento
+                        <p>Desative Marinheiros do sistema.
+                        <a class="btn btn-default" href="" role="button">Saiba Mais »
+                <footer>
+                    <center><p>© Garcia lindo
+      
+      
+          
     |]
 
 
@@ -61,7 +93,7 @@ getCadastrarMarinheiroR = do
         |]
         [whamlet|
             <li> 
-                <a href=@{FuncionarioR}>  Voltar
+                <a href=@{HomeR}>  Voltar
             <div class="container">
 
                 <h2 class="form-signin-heading">Cadastrar Maarinheiro

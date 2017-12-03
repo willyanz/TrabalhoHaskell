@@ -30,11 +30,44 @@ getEmbarcacaoR = do
             
         |]
         [whamlet|
-            <h1> Embarcações
-            <ul>
-                <li> <a href=@{CadastrarEmbarcacaoR}>  Cadastrar Embarcação
-                <li> <a href=@{ListarEmbarcacaoR}>  Listar Embarcação
-                <li> <a href=@{HomeR}>  Home
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                            <a class="navbar-brand" href=@{HomeR}>Home
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <form class="navbar-form navbar-right">
+                                <div class="form-group">
+                                <div class="form-group">
+                                
+                                
+                <div class="jumbotron">
+                    <div class="container">
+                        <h1>Venesa Santista
+                        <p>Embarcações, escolha o que deseja fazer
+                        <a class="btn btn-primary btn-lg" href="" role="button">Saiba Mais »
+                <div class="container">
+                    <div class="col-md-4">
+                        <h2>Cadastrar Embarcações
+                        <p>Cadastre novas embarcações e vincule-as a um responsável
+                        <a class="btn btn-default" href=@{CadastrarEmbarcacaoR} role="button">Saiba Mais »
+                    <div class="col-md-4">
+                        <h2>Listar Embarcações
+                        <p>Veja todas as embarcações cadastradas no Sistema.
+                        <a class="btn btn-default" href=@{ListarEmbarcacaoR} role="button">Saiba Mais»
+                    <div class="col-md-4">
+                        <h2>Desligamento
+                        <p>Desative Embarcações do sistema.
+                        <a class="btn btn-default" href="" role="button">Saiba Mais »
+                <footer>
+                    <center><p>© Garcia lindo
+      
+    
+        
+
         |]
        
 
