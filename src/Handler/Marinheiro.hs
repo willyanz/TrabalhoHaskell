@@ -99,5 +99,12 @@ putEditarMarinheiroR = undefined
 getBuscarMarinheiroR :: MarinheiroId -> Handler Html
 getBuscarMarinheiroR = undefined
 
+
+-- exclusao de marinheiro
+
 postExcluirMarinheiroR :: MarinheiroId -> Handler Html
-postExcluirMarinheiroR = undefined
+postExcluirMarinheiroR mid = do 
+    _ <- runDB $ get404 mid
+    runDB $ delete mid
+    redirect ListarMarinheiroR  
+    

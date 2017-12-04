@@ -114,5 +114,13 @@ putEditarResponsavelR = undefined
 getBuscarResponsavelR :: ResponsavelId -> Handler Html
 getBuscarResponsavelR = undefined
 
+
+-- exclusao de responsavel
+
+
 postExcluirResponsavelR :: ResponsavelId -> Handler Html
-postExcluirResponsavelR = undefined
+postExcluirResponsavelR rid = do 
+    _ <- runDB $ get404 rid
+    runDB $ delete rid
+    redirect ListarResponsavelR
+    
