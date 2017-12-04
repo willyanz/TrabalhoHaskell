@@ -16,6 +16,8 @@ formMarinheiro = renderBootstrap $ Marinheiro
     <$> areq textField     "Nome: " Nothing 
     <*> areq emailField    "Email: " Nothing
     <*> areq passwordField "Senha: "Nothing
+    
+
 
 
 getMarinheiroR :: Handler Html
@@ -27,54 +29,15 @@ getMarinheiroR = do
         addStylesheet $ (StaticR css_jumbotron_css)
         addScript (StaticR js_ieemulationmodeswarning_js)
         addScript (StaticR js_bootstrap_min_js)
-       
-        
         toWidget [lucius|
             li {
                 display: inline-block;
                 list-style:  none;
             }
-            
+        
         |]
-        [whamlet|
-                <nav class="navbar navbar-inverse navbar-fixed-top">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="icon-bar">
-                                <span class="icon-bar">
-                                <span class="icon-bar">
-                            <a class="navbar-brand" href=@{HomeR}>Home
-                        <div id="navbar" class="navbar-collapse collapse">
-                            <form class="navbar-form navbar-right">
-                                <div class="form-group">
-                                <div class="form-group">
-                                
-                                
-                <div class="jumbotron">
-                    <div class="container">
-                        <h1>Venesa Santista
-                        <p>Marinheiros, escolha o que deseja fazer
-                        <a class="btn btn-primary btn-lg" href="" role="button">Saiba Mais »
-                <div class="container">
-                    <div class="col-md-4">
-                        <h2>Cadastrar Marinheiros
-                        <p>Cadastre novos Marinheiros e vincule-as a uma Embarcação ou mais.
-                        <a class="btn btn-default" href=@{CadastrarMarinheiroR} role="button">Saiba Mais »
-                    <div class="col-md-4">
-                        <h2>Listar Marinheiros
-                        <p>Veja todos os marinheiros cadastrados no Sistema.
-                        <a class="btn btn-default" href=@{ListarMarinheiroR} role="button">Saiba Mais»
-                    <div class="col-md-4">
-                        <h2>Desligamento
-                        <p>Desative Marinheiros do sistema.
-                        <a class="btn btn-default" href="" role="button">Saiba Mais »
-                <footer>
-                    <center><p>© Garcia lindo
-      
-      
-          
-    |]
+        $(whamletFile "templates/Marinheiro.hamlet")
+        
 
 
 getCadastrarMarinheiroR :: Handler Html
@@ -117,8 +80,36 @@ postCadastrarMarinheiroR = do
             redirect CadastrarMarinheiroR
  
 
+
+
 getListarMarinheiroR :: Handler Html
-getListarMarinheiroR = undefined
+getListarMarinheiroR = do 
+    marin <- runDB $ selectList [] [] :: Handler [Entity Marinheiro]
+    defaultLayout $ do 
+        [whamlet|
+            <table>
+                <thead>
+                    <tr>
+                        <th> 
+                            Nome  
+                        <th>
+                            Email
+                        <th>
+                            Senha
+                <tbody>
+                    $forall (Entity mid  marinheiro) <- marin
+                        <tr>
+                            <td>
+                                #{marinheiroNm_marinheiro marinheiro}
+                            <td>
+                                #{marinheiroEmailm marinheiro}
+                            <td>
+                                #{marinheiroSenham marinheiro}
+                            
+        |]
+
+
+
 
 putEditarMarinheiroR :: MarinheiroId -> Handler Html
 putEditarMarinheiroR = undefined

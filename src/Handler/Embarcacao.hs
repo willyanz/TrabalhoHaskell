@@ -29,46 +29,7 @@ getEmbarcacaoR = do
             }
             
         |]
-        [whamlet|
-                <nav class="navbar navbar-inverse navbar-fixed-top">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="icon-bar">
-                                <span class="icon-bar">
-                                <span class="icon-bar">
-                            <a class="navbar-brand" href=@{HomeR}>Home
-                        <div id="navbar" class="navbar-collapse collapse">
-                            <form class="navbar-form navbar-right">
-                                <div class="form-group">
-                                <div class="form-group">
-                                
-                                
-                <div class="jumbotron">
-                    <div class="container">
-                        <h1>Venesa Santista
-                        <p>Embarcações, escolha o que deseja fazer
-                        <a class="btn btn-primary btn-lg" href="" role="button">Saiba Mais »
-                <div class="container">
-                    <div class="col-md-4">
-                        <h2>Cadastrar Embarcações
-                        <p>Cadastre novas embarcações e vincule-as a um responsável
-                        <a class="btn btn-default" href=@{CadastrarEmbarcacaoR} role="button">Saiba Mais »
-                    <div class="col-md-4">
-                        <h2>Listar Embarcações
-                        <p>Veja todas as embarcações cadastradas no Sistema.
-                        <a class="btn btn-default" href=@{ListarEmbarcacaoR} role="button">Saiba Mais»
-                    <div class="col-md-4">
-                        <h2>Desligamento
-                        <p>Desative Embarcações do sistema.
-                        <a class="btn btn-default" href="" role="button">Saiba Mais »
-                <footer>
-                    <center><p>© Garcia lindo
-      
-    
-        
-
-        |]
+        $(whamletFile "templates/Embarcacao.hamlet")
        
 
 
@@ -104,14 +65,48 @@ postCadastrarEmbarcacaoR = do
             setMessage $ [shamlet| Falha no Cadastro |]
             redirect CadastrarEmbarcacaoR
 
+
+-- listar embarcações
 getListarEmbarcacaoR :: Handler Html
 getListarEmbarcacaoR = undefined
+{-
+do 
+    embarcacoes <- runDB $ selectList [] [Asc EmbarcacaoNm_embarcacao]
+    defaultLayout $ do 
+        addStylesheet $ (StaticR css_bootstrap_min_css)
+        addScript (StaticR js_bootstrap_min_js)
+        [whamlet|
+            <table>
+                <thead>
+                    <tr>
+                        <td> Id
+                        <td> Número deInscrição 
+                        <td> Responsável 
+                        <td> Nome
+                        <td>
+                
+                <tbody>
+                    $forall (Entity eid embarcacao) <- embarcacoes
+                        <tr> 
+                            <td> #{fromSqlKey eid}
+                            <td> #{embarcacaoInscricao embarcacao}
+                            <td> #{embarcacaoResid embarcacao}
+                            <td> #{embarcacaoNm_embarcacao embarcacao}
+                            <td>
+                                
+                            <td>
+                                <form action=@{ExcluirEmbarcacaoR eid} method=post>
+                                    <input type="submit" value="Deletar">
+                            
+        |]
+-}
 
 getBuscarEmbarcacaoR :: EmbarcacaoId -> Handler Html
 getBuscarEmbarcacaoR = undefined
 
-putEditarEmbarcacaoR :: EmbarcacaoId -> Handler Html
-putEditarEmbarcacaoR = undefined
 
 postExcluirEmbarcacaoR :: EmbarcacaoId -> Handler Html
-postExcluirEmbarcacaoR = undefined
+postExcluirEmbarcacaoR eid = do 
+    _ <- runDB $ get404 eid
+    runDB $ delete eid
+    redirect ListarEmbarcacaoR

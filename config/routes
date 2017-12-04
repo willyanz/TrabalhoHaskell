@@ -26,7 +26,6 @@
 /embarcacao/cadastrar				    CadastrarEmbarcacaoR    GET POST
 /embarcacao/listar					    ListarEmbarcacaoR	    GET
 /embarcacao/buscar/#EmbarcacaoId		BuscarEmbarcacaoR	    GET
-/embarcacao/editar/#EmbarcacaoId		EditarEmbarcacaoR	    PUT
 /embarcacao/excluir/#EmbarcacaoId		ExcluirEmbarcacaoR	    POST
 
 /funcionario                            FuncionarioR            GET 

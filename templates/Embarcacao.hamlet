@@ -1,68 +1,37 @@
-<nav class="navbar navbar-inverse navbar-fixed-top">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand">Tech Parse</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-          <form class="navbar-form navbar-right">
-            <div class="form-group">
-              <!-- <input type="text" placeholder="Email" class="form-control"> -->
-            </div>
-            <div class="form-group">
-              <!-- <input type="password" placeholder="Password" class="form-control"> -->
-            </div>
-            <!-- <button type="submit" class="btn btn-success">Sign in</button> -->
-          </form>
-        </div><!--/.navbar-collapse -->
-      </div>
-    </nav>
-
-    <!-- Main jumbotron for a primary marketing message or call to action -->
-    <div class="jumbotron">
-      <div class="container">
-        <h1>Venesa Santista</h1>
-        <p>Gerenciamento de Travessias Santos X Vicente De Carvalho</p>
-        <p><a class="btn btn-primary btn-lg" href="" role="button">Saiba Mais »</a></p>
-      </div>
-    </div>
+                <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                            <a class="navbar-brand" href=@{HomeR}>Home
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <form class="navbar-form navbar-right">
+                                <div class="form-group">
+                                <div class="form-group">
+                                
+                                
+                <div class="jumbotron">
+                    <div class="container">
+                        <h1>Venesa Santista
+                        <p>Embarcações, escolha o que deseja fazer
+                        <a class="btn btn-primary btn-lg" href="" role="button">Saiba Mais »
+                <div class="container">
+                    <div class="col-md-4">
+                        <h2>Cadastrar Embarcações
+                        <p>Cadastre novas embarcações e vincule-as a um responsável
+                        <a class="btn btn-default" href=@{CadastrarEmbarcacaoR} role="button">Saiba Mais »
+                    <div class="col-md-4">
+                        <h2>Listar Embarcações
+                        <p>Veja todas as embarcações cadastradas no Sistema.
+                        <a class="btn btn-default" href=@{ListarEmbarcacaoR} role="button">Saiba Mais»
+                    <div class="col-md-4">
+                        <h2>Desligamento
+                        <p>Desative Embarcações do sistema.
+                        <a class="btn btn-default" href="" role="button">Saiba Mais »
+                <footer>
+                    <center><p>© Garcia lindo
+      
     
-        <!-- Example row of columns -->
-            <div class="row">
-        <center><h2>Cadastro de Embarcações</h2>
-		
-	  </div>
-
-
-    <div class="container">
-      <!-- Example row of columns -->
-      <div class="col-md-4">
-          <h2>Responsáveis</h2>
-          <p>Gerencie Suas Embarcações e Colaboradores </p>
-          <p><a class="btn btn-default" href=@{Pag1R} role="button">Saiba Mais »</a></p>
-        </div>
-        <div class="col-md-4">
-          <h2>Embarcações</h2>
-          <p>Embarcações Cadastradas</p>
-		  
-          <p><a class="btn btn-default"  href=@{Pag2R} role="button">Saiba Mais»</a></p>
-       </div>
-        <div class="col-md-4">
-          <h2>Marinheiros</h2>
-          <p>Gerencie suas viagens, consulte </p>
-          <p><a class="btn btn-default" href=@{Pag3R} role="button">Saiba Mais »</a></p>
-        </div>
-      </div>
-
-      <hr>
-
-      <footer>
-        <center><p>© 2016 Tech Parse, LTDA.</p></center>
-      </footer>
-    </div> <!-- /container -->
-
+     
