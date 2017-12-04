@@ -43,13 +43,32 @@ getHomeR = do
 home :: Text -> Widget
 home "_Adm" = 
     [whamlet|
-        <h1> Coisas de ADM
-        <h1> _{MsgBemvindo} - Adm 
-            <br>
-            <li> <a href=@{FuncionarioR}> Funcionarios
-            <li> 
-                <form action=@{LogoutR} method=post>
-                    <input type="submit" value="Logout">
+         <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                            <a class="navbar-brand" href=@{LogoutR}>Logout
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <form class="navbar-form navbar-right">
+                                <div class="form-group">
+                                <div class="form-group">
+                                
+                                
+         <div class="jumbotron">
+             <div class="container">
+                 <h1>Seja Bem Vindo A Venesa Santista
+                 <p>Sistema de Controle De Travessias
+             <div class="container">
+                 <div class="col-md-4">
+                    <h2>Funcionários
+                    <p>Gerencie Funcionários 
+                    <a class="btn btn-default" href=@{FuncionarioR} role="button">Saiba Mais »
+         <footer>
+            <center><p>© Garcia lindo
+                    
     |]
 home "_Funcionario" =
     [whamlet|

@@ -53,11 +53,11 @@ getResponsavelR = do
                     <div class="col-md-4">
                         <h2>Cadastrar Responsáveis
                         <p>Cadastre novos Responsáveis e vincule-as a uma Embarcação ou mais.
-                        <a class="btn btn-default" href=@{CadastrarMarinheiroR} role="button">Saiba Mais »
+                        <a class="btn btn-default" href=@{CadastrarResponsavelR} role="button">Saiba Mais »
                     <div class="col-md-4">
                         <h2>Listar Responsáveis
                         <p>Veja todos os Responsáveis cadastrados no Sistema.
-                        <a class="btn btn-default" href=@{ListarMarinheiroR} role="button">Saiba Mais»
+                        <a class="btn btn-default" href=@{ListarResponsavelR} role="button">Saiba Mais»
                     <div class="col-md-4">
                         <h2>Desligamento
                         <p>Desative Responsáveis do sistema.
@@ -101,7 +101,34 @@ postCadastrarResponsavelR = do
 -- Listagem de responsavel
 
 getListarResponsavelR :: Handler Html
-getListarResponsavelR = undefined
+getListarResponsavelR = do 
+    responsaveis <- runDB $ selectList [] [Asc ResponsavelNm_responsavel]
+    defaultLayout $ do 
+        addStylesheet $ (StaticR css_bootstrap_min_css)
+        addScript (StaticR js_bootstrap_min_js)
+        [whamlet|
+            <table>
+                <thead>
+                    <tr>
+                        <td> Id
+                        <td> Nome 
+                        <td> Email 
+                        <td> 
+                
+                <tbody>
+                    $forall (Entity rid responsavel) <- responsaveis
+                        <tr> 
+                            <td> #{fromSqlKey rid}
+                            <td> #{responsavelNm_responsavel responsavel}
+                            <td> #{responsavelEmailr responsavel}
+                            <td> 
+                                <form action=@{EditarResponsavelR rid} method=post>
+                                    <input type="submit" value="Trocar Senha">
+                            <td>
+                                <form action=@{ExcluirResponsavelR rid} method=post>
+                                    <input type="submit" value="Deletar">
+                            
+        |]
 
 putEditarResponsavelR :: ResponsavelId -> Handler Html
 putEditarResponsavelR = undefined
