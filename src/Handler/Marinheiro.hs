@@ -87,7 +87,6 @@ getListarMarinheiroR = do
     marin <- runDB $ selectList [] [] :: Handler [Entity Marinheiro]
     defaultLayout $ do 
          addStylesheet $ (StaticR css_bootstrap_min_css)
-         addStylesheet $ (StaticR css_signin_css)
          addScript (StaticR js_bootstrap_min_js)
          $(whamletFile "templates/MarinheiroLista.hamlet")
 

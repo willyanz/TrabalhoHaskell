@@ -106,29 +106,7 @@ getListarResponsavelR = do
     defaultLayout $ do 
         addStylesheet $ (StaticR css_bootstrap_min_css)
         addScript (StaticR js_bootstrap_min_js)
-        [whamlet|
-            <table>
-                <thead>
-                    <tr>
-                        <td> Id
-                        <td> Nome 
-                        <td> Email 
-                        <td> 
-                
-                <tbody>
-                    $forall (Entity rid responsavel) <- responsaveis
-                        <tr> 
-                            <td> #{fromSqlKey rid}
-                            <td> #{responsavelNm_responsavel responsavel}
-                            <td> #{responsavelEmailr responsavel}
-                            <td> 
-                                <form action=@{EditarResponsavelR rid} method=post>
-                                    <input type="submit" value="Trocar Senha">
-                            <td>
-                                <form action=@{ExcluirResponsavelR rid} method=post>
-                                    <input type="submit" value="Deletar">
-                            
-        |]
+        $(whamletFile "templates/ResponsavelLista.hamlet")
 
 putEditarResponsavelR :: ResponsavelId -> Handler Html
 putEditarResponsavelR = undefined
