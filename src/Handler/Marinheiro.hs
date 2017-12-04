@@ -86,27 +86,10 @@ getListarMarinheiroR :: Handler Html
 getListarMarinheiroR = do 
     marin <- runDB $ selectList [] [] :: Handler [Entity Marinheiro]
     defaultLayout $ do 
-        [whamlet|
-            <table>
-                <thead>
-                    <tr>
-                        <th> 
-                            Nome  
-                        <th>
-                            Email
-                        <th>
-                            Senha
-                <tbody>
-                    $forall (Entity mid  marinheiro) <- marin
-                        <tr>
-                            <td>
-                                #{marinheiroNm_marinheiro marinheiro}
-                            <td>
-                                #{marinheiroEmailm marinheiro}
-                            <td>
-                                #{marinheiroSenham marinheiro}
-                            
-        |]
+         addStylesheet $ (StaticR css_bootstrap_min_css)
+         addStylesheet $ (StaticR css_signin_css)
+         addScript (StaticR js_bootstrap_min_js)
+         $(whamletFile "templates/MarinheiroLista.hamlet")
 
 
 

@@ -6,18 +6,18 @@
             <span class="icon-bar">
             <span class="icon-bar">
         <a class="navbar-brand" href=@{HomeR}>Home
-    <div id="navbar" class="navbar-collapse collapse">
+       <div id="navbar" class="navbar-collapse collapse">
         <form class="navbar-form navbar-right">
             <div class="form-group">
             <div class="form-group">
                       
                       
-  <div class="jumbotron">
+<div class="jumbotron">
       <div class="container">
           <h1>Venesa Santista
           <p>Marinheiros, escolha o que deseja fazer
           <a class="btn btn-primary btn-lg" href="" role="button">Saiba Mais »
-  <div class="container">
+<div class="container">
       <div class="col-md-4">
           <h2>Cadastrar Marinheiros
           <p>Cadastre novos Marinheiros.
@@ -27,15 +27,13 @@
           <p>Veja todos os marinheiros cadastrados no Sistema.
           <a class="btn btn-default" href=@{ListarMarinheiroR} role="button">Saiba Mais»
       <div class="col-md-4">
-      <div class="col-md-4">
           <h2>Editar Marinheiros
           <p>Edite os marinheiros cadastrados no Sistema.
           <a class="btn btn-default" href="" role="button">Saiba Mais»
-      <div class="col-md-4">      
       <div class="col-md-4">
           <h2>Desativar Marinheiros
           <p>Desative os marinheiros cadastrados no Sistema.
           <a class="btn btn-default" href="" role="button">Saiba Mais»
-      <div class="col-md-4">
-  <footer>
+      
+<footer>
       <center><p>© Garcia lindo

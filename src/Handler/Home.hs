@@ -47,8 +47,8 @@ home "_Adm" =
         <h1> _{MsgBemvindo} - Adm 
             <br>
             <li> <a href=@{FuncionarioR}> Funcionarios
-             <li> 
-                 <form action=@{LogoutR} method=post>
+            <li> 
+                <form action=@{LogoutR} method=post>
                     <input type="submit" value="Logout">
     |]
 home "_Funcionario" =

@@ -97,6 +97,9 @@ postCadastrarResponsavelR = do
             setMessage $ [shamlet| Falha no Cadastro |]
             redirect CadastrarResponsavelR
 
+
+-- Listagem de responsavel
+
 getListarResponsavelR :: Handler Html
 getListarResponsavelR = undefined
 
