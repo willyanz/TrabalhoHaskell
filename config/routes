@@ -28,11 +28,11 @@
 /embarcacao/buscar/#EmbarcacaoId		BuscarEmbarcacaoR	    GET
 /embarcacao/excluir/#EmbarcacaoId		ExcluirEmbarcacaoR	    POST
 
-/funcionario                            FuncionarioR            GET 
-/funcionario/cadastrar				    CadastrarFuncionarioR   GET POST
-/funcionario/listar					    ListarFuncionarioR	    GET
-/funcionario/buscar/#FuncionarioId		BuscarFuncionarioR	    GET
-/funcionario/editarsenha/#FuncionarioId	EditarSFuncionarioR	    PATCH 
-/funcionario/excluir/#FuncionarioId		ExcluirFuncionarioR	    POST
+/funcionario                                        FuncionarioR            GET 
+/funcionario/cadastrar				                CadastrarFuncionarioR   GET POST
+/funcionario/listar					                ListarFuncionarioR	    GET
+/funcionario/buscar                            		BuscarFuncionarioR	    POST 
+/funcionario/editarsenha/#FuncionarioId	            EditarFuncionarioR	    GET POST 
+/funcionario/excluir/#FuncionarioId		            ExcluirFuncionarioR	    POST
 
 

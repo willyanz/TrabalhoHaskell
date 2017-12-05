@@ -13,7 +13,6 @@ import Database.Persist.Postgresql
 getHomeR :: Handler Html
 getHomeR = do
     logado <- lookupLogin
-    logado' <- lookupSession logado
     defaultLayout $ do
         addStylesheet $ (StaticR css_bootstrap_min_css)
         addStylesheet $ (StaticR css_jumbotron_css)
@@ -28,13 +27,7 @@ getHomeR = do
         |]
         [whamlet|   
             ^{home logado} 
-            <ul>    
-                $maybe logar <- logado'
-                    <ul>
-                        <li> 
-                            <form action=@{LogoutR} method=post>
-                                <input type="submit" value="Logout">
-                $nothing
+            
                 
         
         |]
@@ -50,7 +43,8 @@ home "_Adm" =
                                 <span class="icon-bar">
                                 <span class="icon-bar">
                                 <span class="icon-bar">
-                            <a class="navbar-brand" href=@{LogoutR}>Logout
+                            <form action=@{LogoutR} method=post>
+                                <input type="submit" value="Logout">
                         <div id="navbar" class="navbar-collapse collapse">
                             <form class="navbar-form navbar-right">
                                 <div class="form-group">
@@ -61,52 +55,53 @@ home "_Adm" =
              <div class="container">
                  <h1>Seja Bem Vindo A Venesa Santista
                  <p>Sistema de Controle De Travessias
-             <div class="container">
-                 <div class="col-md-4">
-                    <h2>Funcionários
-                    <p>Gerencie Funcionários 
-                    <a class="btn btn-default" href=@{FuncionarioR} role="button">Saiba Mais »
+        <div class="container">
+             <div class="col-md-4">
+                <h2>Funcionários
+                <p>Gerencie Funcionários 
+                <a class="btn btn-default" href=@{FuncionarioR} role="button">Saiba Mais »
          <footer>
             <center><p>© Garcia lindo
                     
     |]
 home "_Funcionario" =
     [whamlet|
-                <nav class="navbar navbar-inverse navbar-fixed-top">
-                    <div class="container">
-                        <div class="navbar-header">
-                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                                <span class="icon-bar">
-                                <span class="icon-bar">
-                                <span class="icon-bar">
-                            <a class="navbar-brand" href=@{LogoutR}>Logout
-                        <div id="navbar" class="navbar-collapse collapse">
-                            <form class="navbar-form navbar-right">
-                                <div class="form-group">
-                                <div class="form-group">
-                                
-                                
-                <div class="jumbotron">
-                    <div class="container">
-                        <h1>Seja Bem Vindo A Venesa Santista
-                        <p>Sistema de Controle De Travessias
-                        <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
-                <div class="container">
-                    <div class="col-md-4">
-                        <h2>Marinheiros
-                        <p>Veja em qual embarcação esta habilitado
-                        <a class="btn btn-default" href=@{MarinheiroR} role="button">Saiba Mais »
-                    <div class="col-md-4">
-                        <h2>Embarcações
-                        <p>Gerencia suas Viagens
-                        <a class="btn btn-default" href=@{EmbarcacaoR} role="button">Saiba Mais»
-                    <div class="col-md-4">
-                        <h2>Responsáveis
-                        <p>Contato direto com Responsáveis pelas Embarcações
-                        <a class="btn btn-default" href=@{ResponsavelR} role="button">Saiba Mais »
-                <footer>
-                    <center><p>© Garcia lindo
-      
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="icon-bar">
+                        <span class="icon-bar">
+                        <span class="icon-bar">
+                    <form action=@{LogoutR} method=post>
+                                <input type="submit" value="Logout">
+                <div id="navbar" class="navbar-collapse collapse">
+                    <form class="navbar-form navbar-right">
+                        <div class="form-group">
+                        <div class="form-group">
+                        
+                        
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Seja Bem Vindo A Venesa Santista
+                <p>Sistema de Controle De Travessias
+                <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
+        <div class="container">
+            <div class="col-md-4">
+                <h2>Marinheiros
+                <p>Veja em qual embarcação esta habilitado
+                <a class="btn btn-default" href=@{MarinheiroR} role="button">Saiba Mais »
+            <div class="col-md-4">
+                <h2>Embarcações
+                <p>Gerencia suas Viagens
+                <a class="btn btn-default" href=@{EmbarcacaoR} role="button">Saiba Mais»
+            <div class="col-md-4">
+                <h2>Responsáveis
+                <p>Contato direto com Responsáveis pelas Embarcações
+                <a class="btn btn-default" href=@{ResponsavelR} role="button">Saiba Mais »
+        <footer>
+            <center><p>© Garcia lindo
+
     
         
 
@@ -120,7 +115,8 @@ home "_Responsavel" =
                             <span class="icon-bar">
                             <span class="icon-bar">
                             <span class="icon-bar">
-                        <a class="navbar-brand" href=@{LogoutR}>Logout
+                        <form action=@{LogoutR} method=post>
+                                <input type="submit" value="Logout">
                     <div id="navbar" class="navbar-collapse collapse">
                         <form class="navbar-form navbar-right">
                             <div class="form-group">
@@ -144,7 +140,8 @@ home "_Marinheiro" =
                             <span class="icon-bar">
                             <span class="icon-bar">
                             <span class="icon-bar">
-                        <a class="navbar-brand" href=@{LogoutR}>Logout
+                        <form action=@{LogoutR} method=post>
+                                <input type="submit" value="Logout">
                     <div id="navbar" class="navbar-collapse collapse">
                         <form class="navbar-form navbar-right">
                             <div class="form-group">
