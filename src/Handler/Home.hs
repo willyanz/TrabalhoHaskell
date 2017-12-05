@@ -24,6 +24,11 @@ getHomeR = do
                 display: inline-block;
                 list-style:  none;
             }
+            .btn_logout
+            {
+                float:right;
+                margin-top:8px;
+            }
         |]
         [whamlet|   
             ^{home logado} 
@@ -44,7 +49,9 @@ home "_Adm" =
                                 <span class="icon-bar">
                                 <span class="icon-bar">
                             <form action=@{LogoutR} method=post>
-                                <input type="submit" value="Logout">
+                                <button type="submit" value="" class="btn btn-danger btn_logout">
+                                    Logout
+                                    <span class="glyphicon glyphicon-remove" aria-hidden="true">
                         <div id="navbar" class="navbar-collapse collapse">
                             <form class="navbar-form navbar-right">
                                 <div class="form-group">
@@ -74,7 +81,8 @@ home "_Funcionario" =
                         <span class="icon-bar">
                         <span class="icon-bar">
                     <form action=@{LogoutR} method=post>
-                                <input type="submit" value="Logout">
+                        <button type="submit" value="" class="btn btn-danger btn_logout">
+                            Logout
                 <div id="navbar" class="navbar-collapse collapse">
                     <form class="navbar-form navbar-right">
                         <div class="form-group">
@@ -116,7 +124,8 @@ home "_Responsavel" =
                             <span class="icon-bar">
                             <span class="icon-bar">
                         <form action=@{LogoutR} method=post>
-                                <input type="submit" value="Logout">
+                            <button type="submit" value="" class="btn btn-danger btn_logout">
+                                Logout
                     <div id="navbar" class="navbar-collapse collapse">
                         <form class="navbar-form navbar-right">
                             <div class="form-group">
@@ -141,7 +150,8 @@ home "_Marinheiro" =
                             <span class="icon-bar">
                             <span class="icon-bar">
                         <form action=@{LogoutR} method=post>
-                                <input type="submit" value="Logout">
+                            <button type="submit" value="" class="btn btn-danger btn_logout">
+                                Logout
                     <div id="navbar" class="navbar-collapse collapse">
                         <form class="navbar-form navbar-right">
                             <div class="form-group">

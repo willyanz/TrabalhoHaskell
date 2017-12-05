@@ -68,10 +68,10 @@ postCadastrarEmbarcacaoR = do
 
 -- listar embarcações
 getListarEmbarcacaoR :: Handler Html
-getListarEmbarcacaoR = undefined
-{-
-do 
+getListarEmbarcacaoR = do 
     embarcacoes <- runDB $ selectList [] [Asc EmbarcacaoNm_embarcacao]
+    resp <- runDB $ mapM (get404 . embarcacaoResid . entityVal) embarcacoes
+    list <- return $ zip embarcacoes resp
     defaultLayout $ do 
         addStylesheet $ (StaticR css_bootstrap_min_css)
         addScript (StaticR js_bootstrap_min_js)
@@ -86,11 +86,11 @@ do
                         <td>
                 
                 <tbody>
-                    $forall (Entity eid embarcacao) <- embarcacoes
+                    $forall ((Entity eid embarcacao), (responsavel)) <- list
                         <tr> 
                             <td> #{fromSqlKey eid}
                             <td> #{embarcacaoInscricao embarcacao}
-                            <td> #{embarcacaoResid embarcacao}
+                            <td> #{responsavelNm_responsavel responsavel}
                             <td> #{embarcacaoNm_embarcacao embarcacao}
                             <td>
                                 
@@ -99,7 +99,7 @@ do
                                     <input type="submit" value="Deletar">
                             
         |]
--}
+
 
 getBuscarEmbarcacaoR :: EmbarcacaoId -> Handler Html
 getBuscarEmbarcacaoR = undefined
