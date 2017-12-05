@@ -71,11 +71,15 @@ getListarResponsavelR = do
         addScript (StaticR js_bootstrap_min_js)
         $(whamletFile "templates/ResponsavelLista.hamlet")
 
+getEditarResponsavelR :: ResponsavelId -> Handler Html
+getEditarResponsavelR = undefined
+
+
 postEditarResponsavelR :: ResponsavelId -> Handler Html
 postEditarResponsavelR = undefined
 
-getBuscarResponsavelR :: ResponsavelId -> Handler Html
-getBuscarResponsavelR = undefined
+postBuscarResponsavelR :: Handler Html
+postBuscarResponsavelR = undefined
 
 
 

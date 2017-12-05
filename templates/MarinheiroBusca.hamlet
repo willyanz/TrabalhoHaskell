@@ -3,7 +3,7 @@
                         <div class="navbar-header">
                             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                                 <span class="icon-bar">
-                            <a class="navbar-brand" href=@{HomeR}>Home
+                            <a class="navbar-brand" href=@{ListarMarinheiroR}>Voltar
                         <div id="navbar" class="navbar-collapse collapse">
                             <form class="navbar-form navbar-right">
                                 <div class="form-group">
@@ -12,26 +12,25 @@
                 
                 <div class="jumbotron">
                      <div class="container">
-                         <h1>Marinheiros Cadastrados  
+                         <h1>Marinheiros Cadastrados
                 
                 <div class="container">
                     <table class="table">
                         <thead>
                             <tr>
-                                <th> Id
-                                <th> Nome 
-                                <th> Email 
-                                <th> 
-        
+                                <td> Id
+                                <td> Nome 
+                                <td> Email 
+                                <td> 
+                        
                         <tbody>
-                            $forall (Entity mid marinheiro) <- marin
+                            $forall (Entity mid marinheiro) <- marinheiros
                                 <tr> 
                                     <td> #{fromSqlKey mid}
                                     <td> #{marinheiroNm_marinheiro marinheiro}
                                     <td> #{marinheiroEmailm marinheiro}
                                     <td> 
-                                        <form action=@{EditarMarinheiroR mid} method=post>
-                                            <input type="submit" value="Trocar Senha">
+                                        <a href=@{EditarMarinheiroR mid}>Editar
                                     <td>
                                         <form action=@{ExcluirMarinheiroR mid} method=post>
                                             <input type="submit" value="Deletar">

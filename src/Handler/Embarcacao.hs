@@ -78,8 +78,8 @@ getListarEmbarcacaoR = do
         $(whamletFile "templates/EmbarcacaoLista.hamlet")
 
 
-getBuscarEmbarcacaoR :: EmbarcacaoId -> Handler Html
-getBuscarEmbarcacaoR = undefined
+postBuscarEmbarcacaoR ::  Handler Html
+postBuscarEmbarcacaoR = undefined
 
 
 postExcluirEmbarcacaoR :: EmbarcacaoId -> Handler Html

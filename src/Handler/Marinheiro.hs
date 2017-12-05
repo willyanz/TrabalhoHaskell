@@ -17,6 +17,9 @@ formMarinheiro = renderBootstrap $ Marinheiro
     <*> areq emailField    "Email: " Nothing
     <*> areq passwordField "Senha: "Nothing
     
+formBusca :: Form Text
+formBusca = renderBootstrap $ 
+    areq (searchField True) "Marinheiro" Nothing
 
 
 
@@ -85,19 +88,33 @@ postCadastrarMarinheiroR = do
 getListarMarinheiroR :: Handler Html
 getListarMarinheiroR = do 
     marin <- runDB $ selectList [] [] :: Handler [Entity Marinheiro]
+    (searchWidget, enctype) <- generateFormPost formBusca
     defaultLayout $ do 
          addStylesheet $ (StaticR css_bootstrap_min_css)
          addScript (StaticR js_bootstrap_min_js)
          $(whamletFile "templates/MarinheiroLista.hamlet")
 
 
+getEditarMarinheiroR :: MarinheiroId -> Handler Html
+getEditarMarinheiroR = undefined
 
+postEditarMarinheiroR :: MarinheiroId -> Handler Html
+postEditarMarinheiroR = undefined
 
-putEditarMarinheiroR :: MarinheiroId -> Handler Html
-putEditarMarinheiroR = undefined
-
-getBuscarMarinheiroR :: MarinheiroId -> Handler Html
-getBuscarMarinheiroR = undefined
+postBuscarMarinheiroR :: Handler Html
+postBuscarMarinheiroR = do
+    ((res, _), _) <- runFormPost formBusca  
+    case res of
+        FormSuccess mid -> do
+            marinheiros <- runDB $ selectList [Filter MarinheiroNm_marinheiro (Left $ concat ["%",mid,"%"]) (BackendSpecificFilter "ILIKE")] []
+            defaultLayout $ do
+                addStylesheet $ (StaticR css_bootstrap_min_css)
+                addScript (StaticR js_bootstrap_min_js)
+                $(whamletFile "templates/MarinheiroBusca.hamlet")
+               
+        _ -> do
+            setMessage $ [shamlet| Marinheiro não encontrado |]
+            redirect ListarMarinheiroR
 
 
 -- exclusao de marinheiro

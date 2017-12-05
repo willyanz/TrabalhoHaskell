@@ -11,28 +11,28 @@
 /responsavel                            ResponsavelR            GET 
 /responsavel/cadastrar					CadastrarResponsavelR	GET	POST
 /responsavel/listar						ListarResponsavelR		GET
-/responsavel/editar/#ResponsavelId		EditarResponsavelR      POST
-/responsavel/buscar/#ResponsavelId	    BuscarResponsavelR		GET
+/responsavel/editar/#ResponsavelId		EditarResponsavelR      GET POST
+/responsavel/buscar             	    BuscarResponsavelR		POST
 /responsavel/excluir/#ResponsavelId		ExcluirResponsavelR 	POST
 
 /marinheiro                             MarinheiroR             GET 
 /marinheiro/cadastrar				    CadastrarMarinheiroR    GET POST
 /marinheiro/listar					    ListarMarinheiroR       GET
-/marinheiro/editar/#MarinheiroId        EditarMarinheiroR       PUT
-/marinheiro/buscar/#MarinheiroId        BuscarMarinheiroR       GET
+/marinheiro/editar/#MarinheiroId        EditarMarinheiroR       GET POST
+/marinheiro/buscar                      BuscarMarinheiroR       POST
 /marinheiro/excluir/#MarinheiroId       ExcluirMarinheiroR      POST
 
 /embarcacao                             EmbarcacaoR             GET 
 /embarcacao/cadastrar				    CadastrarEmbarcacaoR    GET POST
 /embarcacao/listar					    ListarEmbarcacaoR	    GET
-/embarcacao/buscar/#EmbarcacaoId		BuscarEmbarcacaoR	    GET
+/embarcacao/buscar              		BuscarEmbarcacaoR	    POST
 /embarcacao/excluir/#EmbarcacaoId		ExcluirEmbarcacaoR	    POST
 
 /funcionario                                        FuncionarioR            GET 
 /funcionario/cadastrar				                CadastrarFuncionarioR   GET POST
 /funcionario/listar					                ListarFuncionarioR	    GET
 /funcionario/buscar                            		BuscarFuncionarioR	    POST 
-/funcionario/editarsenha/#FuncionarioId	            EditarFuncionarioR	    GET POST 
+/funcionario/editar/#FuncionarioId	                EditarFuncionarioR	    GET POST 
 /funcionario/excluir/#FuncionarioId		            ExcluirFuncionarioR	    POST
 
 

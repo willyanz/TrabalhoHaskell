@@ -13,6 +13,11 @@
                 <div class="jumbotron">
                      <div class="container">
                          <h1>Marinheiros Cadastrados  
+                         
+                <div class="container">
+                    <form action=@{BuscarFuncionarioR} method=post>
+                            ^{searchWidget}
+                            <input type="submit" value="Buscar">
                 
                 <div class="container">
                     <table class="table">
@@ -30,8 +35,7 @@
                                     <td> #{marinheiroNm_marinheiro marinheiro}
                                     <td> #{marinheiroEmailm marinheiro}
                                     <td> 
-                                        <form action=@{EditarMarinheiroR mid} method=post>
-                                            <input type="submit" value="Trocar Senha">
+                                        <a href=@{EditarFuncionarioR mid}>Editar
                                     <td>
                                         <form action=@{ExcluirMarinheiroR mid} method=post>
                                             <input type="submit" value="Deletar">
