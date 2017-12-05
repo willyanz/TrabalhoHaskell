@@ -19,8 +19,8 @@ formFuncionario = renderBootstrap $ Funcionario
     <*> areq passwordField "Senha: " Nothing
 
 -- formulário de edição    
-formSenha :: Maybe Funcionario -> Form Funcionario
-formSenha funci = renderBootstrap $ Funcionario
+formEditar :: Maybe Funcionario -> Form Funcionario
+formEditar funci = renderBootstrap $ Funcionario
     <$> areq textField "Nome"   (funcionarioNm_funcionario  <$> funci)
     <*> areq emailField "Email"  (funcionarioEmailf <$> funci)
     <*> areq passwordField "Senha"  (funcionarioSenhaf <$> funci)
@@ -42,13 +42,7 @@ getFuncionarioR = do
             }
             
         |]
-        [whamlet|
-            <h1> Funcionarios
-            <ul>
-                <li> <a href=@{CadastrarFuncionarioR}>  Cadastrar Funcionario
-                <li> <a href=@{ListarFuncionarioR}>  Listar Funcionarios
-                <li> <a href=@{HomeR}>  Home
-        |]
+        $(whamletFile "templates/Funcionario.hamlet")
 
 -- preenchimento de formulario para cadastro de funcionarios utilizando o form criado acima
 getCadastrarFuncionarioR :: Handler Html
@@ -56,13 +50,28 @@ getCadastrarFuncionarioR = do
     (widget,enctype) <- generateFormPost formFuncionario
     defaultLayout $ do
         addStylesheet $ (StaticR css_bootstrap_min_css)
+        addStylesheet $ (StaticR css_jumbotron_css)
+        addScript (StaticR js_ieemulationmodeswarning_js)
         addScript (StaticR js_bootstrap_min_js)
         [whamlet|
-            <li> 
-                <a href=@{FuncionarioR}>  Voltar
-            <form action=@{CadastrarFuncionarioR} method=post>
-                ^{widget}
-                <input type="submit" value="Cadastrar">
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="icon-bar">
+                            <a class="navbar-brand" href=@{FuncionarioR}>Voltar
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <form class="navbar-form navbar-right">
+                                <div class="form-group">
+                                <div class="form-group">
+            
+            <div class="container">
+                <center> 
+                    
+                    <form action=@{CadastrarFuncionarioR} method=post>
+                        ^{widget}
+                        <ul>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Concluir
         |]
 
 -- inclusao do formulario preenchido no banco
@@ -85,53 +94,40 @@ getListarFuncionarioR = do
     defaultLayout $ do 
         addStylesheet $ (StaticR css_bootstrap_min_css)
         addScript (StaticR js_bootstrap_min_js)
-        [whamlet|
-            <a href=@{FuncionarioR}>  Voltar
-            <form action=@{BuscarFuncionarioR} method=post>
-                ^{searchWidget}
-                <input type="submit" value="Buscar">
-            <table>
-                <thead>
-                    <tr>
-                        <td> Id
-                        <td> Nome 
-                        <td> Email 
-                        <td> 
-                
-                <tbody>
-                    $forall (Entity fid funcionario) <- funcionarios
-                        <tr> 
-                            <td> #{fromSqlKey fid}
-                            <td> #{funcionarioNm_funcionario funcionario}
-                            <td> #{funcionarioEmailf funcionario}
-                            <td> 
-                                <form action=@{EditarFuncionarioR fid} method=post>
-                                    <input type="submit" value="Editar">
-                            <td>
-                                <form action=@{ExcluirFuncionarioR fid} method=post>
-                                    <input type="submit" value="Deletar">
-                            
-        |]
+        $(whamletFile "templates/FuncionarioLista.hamlet")
 
 -- alteração de senha
 getEditarFuncionarioR :: FuncionarioId -> Handler Html
 getEditarFuncionarioR fid = do 
     func <- runDB $ get fid
-    (widget,enctype) <- generateFormPost $ formSenha func
+    (widget,enctype) <- generateFormPost $ formEditar func
     defaultLayout $ do
         addStylesheet $ (StaticR css_bootstrap_min_css)
+        addStylesheet $ (StaticR css_jumbotron_css)
+        addScript (StaticR js_ieemulationmodeswarning_js)
         addScript (StaticR js_bootstrap_min_js)
-        [whamlet| 
-            <li> 
-                <a href=@{ListarFuncionarioR}>  Voltar
-                <form action=@{EditarFuncionarioR fid} method=post>
-                    ^{widget}
-                    <input type="submit" value="Alterar">
+        [whamlet|
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="icon-bar">
+                                <a class="navbar-brand" href=@{ListarFuncionarioR}>Voltar
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <form class="navbar-form navbar-right">
+                                    <div class="form-group">
+                                    <div class="form-group">
+                                    
+            <div class="container">
+                <center>
+                    <form action=@{EditarFuncionarioR fid} method=post>
+                        ^{widget}
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Concluir
         |]
         
 postEditarFuncionarioR :: FuncionarioId -> Handler Html
 postEditarFuncionarioR fid = do 
-    ((res,_),_) <- runFormPost $ formSenha Nothing
+    ((res,_),_) <- runFormPost $ formEditar Nothing
 
     case res of 
         FormSuccess func -> do
@@ -150,30 +146,10 @@ postBuscarFuncionarioR = do
         FormSuccess fid -> do
             funcionarios <- runDB $ selectList [Filter FuncionarioNm_funcionario (Left $ concat ["%",fid,"%"]) (BackendSpecificFilter "ILIKE")] []
             defaultLayout $ do
-                [whamlet|
-                <a href=@{FuncionarioR}>  Voltar
-                <table>
-                    <thead>
-                        <tr>
-                            <td> Id
-                            <td> Nome 
-                            <td> Email 
-                            <td> 
-                    
-                    <tbody>
-                        $forall (Entity fid funcionario) <- funcionarios
-                            <tr> 
-                                <td> #{fromSqlKey fid}
-                                <td> #{funcionarioNm_funcionario funcionario}
-                                <td> #{funcionarioEmailf funcionario}
-                                <td> 
-                                    <a href=@{EditarFuncionarioR fid}>Editar
-                                        
-                                <td>
-                                    <form action=@{ExcluirFuncionarioR fid} method=post>
-                                        <input type="submit" value="Deletar">
-                                
-                |]
+                addStylesheet $ (StaticR css_bootstrap_min_css)
+                addScript (StaticR js_bootstrap_min_js)
+                $(whamletFile "templates/FuncionarioBusca.hamlet")
+               
         _ -> do
             setMessage $ [shamlet| Funcionário não encontrado |]
             redirect ListarFuncionarioR

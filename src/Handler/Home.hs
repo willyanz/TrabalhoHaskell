@@ -16,7 +16,7 @@ getHomeR = do
     defaultLayout $ do
         addStylesheet $ (StaticR css_bootstrap_min_css)
         addStylesheet $ (StaticR css_jumbotron_css)
-        addStylesheet $ (StaticR css_signin_css)
+        
         addScript (StaticR js_ieemulationmodeswarning_js)
         addScript (StaticR js_bootstrap_min_js)
         toWidget [lucius|
