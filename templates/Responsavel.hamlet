@@ -26,10 +26,6 @@
                         <h2>Listar Responsáveis
                         <p>Veja todos os Responsáveis cadastrados no Sistema.
                         <a class="btn btn-default" href=@{ListarResponsavelR} role="button">Saiba Mais»
-                    <div class="col-md-4">
-                        <h2>Desligamento
-                        <p>Desative Responsáveis do sistema.
-                        <a class="btn btn-default" href="" role="button">Saiba Mais »
                 <footer>
                     <center><p>© Garcia lindo
       

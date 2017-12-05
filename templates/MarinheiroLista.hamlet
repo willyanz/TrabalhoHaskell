@@ -15,7 +15,7 @@
                          <h1>Marinheiros Cadastrados  
                          
                 <div class="container">
-                    <form action=@{BuscarFuncionarioR} method=post>
+                    <form action=@{BuscarMarinheiroR} method=post>
                             ^{searchWidget}
                             <input type="submit" value="Buscar">
                 
@@ -35,7 +35,7 @@
                                     <td> #{marinheiroNm_marinheiro marinheiro}
                                     <td> #{marinheiroEmailm marinheiro}
                                     <td> 
-                                        <a href=@{EditarFuncionarioR mid}>Editar
+                                        <a href=@{EditarMarinheiroR mid}>Editar
                                     <td>
                                         <form action=@{ExcluirMarinheiroR mid} method=post>
                                             <input type="submit" value="Deletar">

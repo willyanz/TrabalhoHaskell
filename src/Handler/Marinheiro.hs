@@ -20,6 +20,12 @@ formMarinheiro = renderBootstrap $ Marinheiro
 formBusca :: Form Text
 formBusca = renderBootstrap $ 
     areq (searchField True) "Marinheiro" Nothing
+    
+formEditar :: Maybe Marinheiro -> Form Marinheiro
+formEditar marin = renderBootstrap $ Marinheiro
+    <$> areq textField "Nome"   (marinheiroNm_marinheiro  <$> marin)
+    <*> areq emailField "Email"  (marinheiroEmailm <$> marin)
+    <*> areq passwordField "Senha"  (marinheiroSenham <$> marin)
 
 
 
@@ -96,10 +102,46 @@ getListarMarinheiroR = do
 
 
 getEditarMarinheiroR :: MarinheiroId -> Handler Html
-getEditarMarinheiroR = undefined
+getEditarMarinheiroR mid = do 
+    marin <- runDB $ get mid
+    (widget,enctype) <- generateFormPost $ formEditar marin
+    defaultLayout $ do
+        addStylesheet $ (StaticR css_bootstrap_min_css)
+        addStylesheet $ (StaticR css_jumbotron_css)
+        addScript (StaticR js_ieemulationmodeswarning_js)
+        addScript (StaticR js_bootstrap_min_js)
+        [whamlet|
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                        <div class="container">
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                    <span class="icon-bar">
+                                <a class="navbar-brand" href=@{ListarMarinheiroR}>Voltar
+                            <div id="navbar" class="navbar-collapse collapse">
+                                <form class="navbar-form navbar-right">
+                                    <div class="form-group">
+                                    <div class="form-group">
+                                    
+            <div class="container">
+                <center>
+                    <form action=@{EditarMarinheiroR mid} method=post>
+                        ^{widget}
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">Concluir
+        |]
 
 postEditarMarinheiroR :: MarinheiroId -> Handler Html
-postEditarMarinheiroR = undefined
+postEditarMarinheiroR mid = do 
+    ((res,_),_) <- runFormPost $ formEditar Nothing
+
+    case res of 
+        FormSuccess func -> do
+            _ <- runDB $ replace mid func
+            redirect FuncionarioR
+        _ -> do
+            setMessage $ [shamlet| Erro |]
+            redirect ListarMarinheiroR
+            
+            
 
 postBuscarMarinheiroR :: Handler Html
 postBuscarMarinheiroR = do

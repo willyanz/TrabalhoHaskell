@@ -26,10 +26,7 @@
                         <h2>Listar Embarcações
                         <p>Veja todas as embarcações cadastradas no Sistema.
                         <a class="btn btn-default" href=@{ListarEmbarcacaoR} role="button">Saiba Mais»
-                    <div class="col-md-4">
-                        <h2>Desligamento
-                        <p>Desative Embarcações do sistema.
-                        <a class="btn btn-default" href="" role="button">Saiba Mais »
+                    
                 <footer>
                     <center><p>© Garcia lindo
       

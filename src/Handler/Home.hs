@@ -67,7 +67,7 @@ home "_Adm" =
                 <h2>Funcionários
                 <p>Gerencie Funcionários 
                 <a class="btn btn-default" href=@{FuncionarioR} role="button">Saiba Mais »
-         <footer>
+        <footer>
             <center><p>© Garcia lindo
                     
     |]
@@ -93,7 +93,6 @@ home "_Funcionario" =
             <div class="container">
                 <h1>Seja Bem Vindo A Venesa Santista
                 <p>Sistema de Controle De Travessias
-                <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
         <div class="container">
             <div class="col-md-4">
                 <h2>Marinheiros
@@ -136,7 +135,6 @@ home "_Responsavel" =
             <div class="container">
                 <h1>Seja Bem Vindo A Venesa Santista
                 <p>Sistema de Controle De Travessias
-                <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
         <footer>
             <center><p>© Garcia lindo
     |]
@@ -162,7 +160,6 @@ home "_Marinheiro" =
             <div class="container">
                 <h1>Seja Bem Vindo A Venesa Santista
                 <p>Sistema de Controle De Travessias da Catraia
-                <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
         
         <footer>
             <center><p>>© Garcia lindo
@@ -187,7 +184,6 @@ home _ =
             <div class="container">
                 <h1>Seja Bem Vindo A Venesa Santista
                 <p>Sistema de Controle De Travessias
-                <a class="btn btn-primary btn-lg" href="Index.html" role="button">Saiba Mais »
       
         <footer>
             <center><p>© Garcia lindo

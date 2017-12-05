@@ -3,9 +3,7 @@
     <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
             <span class="icon-bar">
-            <span class="icon-bar">
-            <span class="icon-bar">
-        <a class="navbar-brand" href=@{HomeR}>Home
+            <a class="navbar-brand" href=@{HomeR}>Home
        <div id="navbar" class="navbar-collapse collapse">
         <form class="navbar-form navbar-right">
             <div class="form-group">
@@ -26,14 +24,7 @@
           <h2>Listar Marinheiros
           <p>Veja todos os marinheiros cadastrados no Sistema.
           <a class="btn btn-default" href=@{ListarMarinheiroR} role="button">Saiba Mais»
-      <div class="col-md-4">
-          <h2>Editar Marinheiros
-          <p>Edite os marinheiros cadastrados no Sistema.
-          <a class="btn btn-default" href="" role="button">Saiba Mais»
-      <div class="col-md-4">
-          <h2>Desativar Marinheiros
-          <p>Desative os marinheiros cadastrados no Sistema.
-          <a class="btn btn-default" href="" role="button">Saiba Mais»
+      
       
 <footer>
       <center><p>© Garcia lindo
