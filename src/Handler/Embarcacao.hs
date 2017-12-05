@@ -75,30 +75,7 @@ getListarEmbarcacaoR = do
     defaultLayout $ do 
         addStylesheet $ (StaticR css_bootstrap_min_css)
         addScript (StaticR js_bootstrap_min_js)
-        [whamlet|
-            <table>
-                <thead>
-                    <tr>
-                        <td> Id
-                        <td> Número deInscrição 
-                        <td> Responsável 
-                        <td> Nome
-                        <td>
-                
-                <tbody>
-                    $forall ((Entity eid embarcacao), (responsavel)) <- list
-                        <tr> 
-                            <td> #{fromSqlKey eid}
-                            <td> #{embarcacaoInscricao embarcacao}
-                            <td> #{responsavelNm_responsavel responsavel}
-                            <td> #{embarcacaoNm_embarcacao embarcacao}
-                            <td>
-                                
-                            <td>
-                                <form action=@{ExcluirEmbarcacaoR eid} method=post>
-                                    <input type="submit" value="Deletar">
-                            
-        |]
+        $(whamletFile "templates/EmbarcacaoLista.hamlet")
 
 
 getBuscarEmbarcacaoR :: EmbarcacaoId -> Handler Html

@@ -12,29 +12,28 @@
                 
                 <div class="jumbotron">
                      <div class="container">
-                         <h1>Embarcações Cadastradas  
+                         <h1>Marinheiros Cadastrados  
                 
                 <div class="container">
                     <table class="table">
                         <thead>
                             <tr>
-                                <td> Id
-                                <td> Número deInscrição 
-                                <td> Responsável 
-                                <td> Nome
-                                <td>
-                        
+                                <th> Id
+                                <th> Nome 
+                                <th> Email 
+                                <th> 
+        
                         <tbody>
-                            $forall ((Entity eid embarcacao), (responsavel)) <- list
+                            $forall (Entity mid marinheiro) <- marin
                                 <tr> 
-                                    <td> #{fromSqlKey eid}
-                                    <td> #{embarcacaoInscricao embarcacao}
-                                    <td> #{responsavelNm_responsavel responsavel}
-                                    <td> #{embarcacaoNm_embarcacao embarcacao}
+                                    <td> #{fromSqlKey mid}
+                                    <td> #{marinheiroNm_marinheiro marinheiro}
+                                    <td> #{marinheiroEmailm marinheiro}
+                                    <td> 
+                                        <form action=@{EditarMarinheiroR mid} method=post>
+                                            <input type="submit" value="Trocar Senha">
                                     <td>
-                                        
-                                    <td>
-                                        <form action=@{ExcluirEmbarcacaoR eid} method=post>
+                                        <form action=@{ExcluirMarinheiroR mid} method=post>
                                             <input type="submit" value="Deletar">
                 <footer>
                     <center><p>© Garcia lindo

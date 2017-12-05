@@ -30,11 +30,13 @@
                                     <td> #{responsavelNm_responsavel responsavel}
                                     <td> #{responsavelEmailr responsavel}
                                     <td> 
-                                        <form action=@{EditarResponsavelR rid} method=post>
-                                            <input type="submit" value="Trocar Senha">
+                                        <a href=@{EditarResponsavelR rid}>Editar
                                     <td>
                                         <form action=@{ExcluirResponsavelR rid} method=post>
                                             <input type="submit" value="Deletar">
+                                            
+                                                
+                                            
                 <footer>
                     <center><p>© Garcia lindo
       

@@ -11,7 +11,7 @@
 /responsavel                            ResponsavelR            GET 
 /responsavel/cadastrar					CadastrarResponsavelR	GET	POST
 /responsavel/listar						ListarResponsavelR		GET
-/responsavel/editar/#ResponsavelId		EditarResponsavelR      PUT
+/responsavel/editar/#ResponsavelId		EditarResponsavelR      POST
 /responsavel/buscar/#ResponsavelId	    BuscarResponsavelR		GET
 /responsavel/excluir/#ResponsavelId		ExcluirResponsavelR 	POST
 

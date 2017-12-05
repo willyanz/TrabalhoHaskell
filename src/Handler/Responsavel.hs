@@ -71,16 +71,15 @@ getListarResponsavelR = do
         addScript (StaticR js_bootstrap_min_js)
         $(whamletFile "templates/ResponsavelLista.hamlet")
 
-putEditarResponsavelR :: ResponsavelId -> Handler Html
-putEditarResponsavelR = undefined
+postEditarResponsavelR :: ResponsavelId -> Handler Html
+postEditarResponsavelR = undefined
 
 getBuscarResponsavelR :: ResponsavelId -> Handler Html
 getBuscarResponsavelR = undefined
 
 
+
 -- exclusao de responsavel
-
-
 postExcluirResponsavelR :: ResponsavelId -> Handler Html
 postExcluirResponsavelR rid = do 
     _ <- runDB $ get404 rid

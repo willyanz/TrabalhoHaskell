@@ -42,10 +42,11 @@ getLoginR = do
              $maybe mensa <- msg 
                     <h1> Usuario Invalido
             <div class="container">
-                <h2 class="form-signin-heading">Login
-                <form class="sign-in" action=@{LoginR} method=post> 
-                        ^{widget}
-                        <button class="btn btn-lg btn-primary btn-block" type="submit">Login
+                <center>
+                    <h2 class="form-signin-heading">Login
+                    <form class="sign-in" action=@{LoginR} method=post> 
+                            ^{widget}
+                            <button class="btn btn-lg btn-primary btn-block" type="submit">Login
         |]
 
 -- autentifica os dados recebidos pelo form 
