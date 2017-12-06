@@ -64,11 +64,22 @@ getCadastrarMarinheiroR = do
             
         |]
         [whamlet|
-            <li> 
-                <a href=@{HomeR}>  Voltar
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                            <a class="navbar-brand" href=@{MarinheiroR}>Voltar
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <form class="navbar-form navbar-right">
+                                <div class="form-group">
+                                <div class="form-group">
+                                
             <div class="container">
 
-                <h2 class="form-signin-heading">Cadastrar Maarinheiro
+                <h2 class="form-signin-heading">Cadastrar Marinheiro
                 <form class="sign-in" action=@{CadastrarMarinheiroR} method=post >
                     ^{widget}
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Concluir

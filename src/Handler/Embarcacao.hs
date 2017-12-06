@@ -42,14 +42,25 @@ getCadastrarEmbarcacaoR = do
         addStylesheet $ (StaticR css_bootstrap_min_css)
         addScript (StaticR js_bootstrap_min_js)
         [whamlet|
-            <li>
+            <nav class="navbar navbar-inverse navbar-fixed-top">
+                    <div class="container">
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                                <span class="icon-bar">
+                            <a class="navbar-brand" href=@{EmbarcacaoR}>Voltar
+                        <div id="navbar" class="navbar-collapse collapse">
+                            <form class="navbar-form navbar-right">
+                                <div class="form-group">
+                                <div class="form-group">
             <div class="container">
-
+            
                 <h2 class="form-signin-heading">Cadastrar Embarcação
                 <form class="sign-in" action=@{CadastrarEmbarcacaoR} method=post >
                     ^{widget}
                     <button class="btn btn-lg btn-primary btn-block" type="submit">Concluir
-               
+           
         |]
 
 

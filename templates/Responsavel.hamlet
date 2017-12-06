@@ -16,11 +16,10 @@
                     <div class="container">
                         <h1>Venesa Santista
                         <p>Responsáveis, escolha o que deseja fazer
-                        <a class="btn btn-primary btn-lg" href="" role="button">Saiba Mais »
                 <div class="container">
                     <div class="col-md-4">
                         <h2>Cadastrar Responsáveis
-                        <p>Cadastre novos Responsáveis e vincule-as a uma Embarcação ou mais.
+                        <p>Cadastre novos Responsáveis.
                         <a class="btn btn-default" href=@{CadastrarResponsavelR} role="button">Saiba Mais »
                     <div class="col-md-4">
                         <h2>Listar Responsáveis
